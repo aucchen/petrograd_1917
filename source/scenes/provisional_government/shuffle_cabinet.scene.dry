@@ -1,0 +1,12 @@
+title: Shuffle Cabinet
+new-page: true
+is-card: true
+on-arrival: shuffle_cabinet_timer += 3; week_actions += 1
+view-if: shuffle_cabinet_timer = 0 and ((player_party == "k" and k_in_gov and prime_minister == "Lvov") or (player_party == "m" and m_in_gov and prime_minister_party == "Menshevik") or (player_party == "sr" and sr_in_gov and prime_minister_party == "SR"))
+card-image: img/prov_gov_1.jpg
+
+
+@no_shuffle
+title: We do not need to shuffle the cabinet.
+on-arrival: week_actions -= 1
+

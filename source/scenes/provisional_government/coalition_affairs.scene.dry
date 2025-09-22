@@ -4,14 +4,19 @@ is-card: true
 on-arrival: week_actions += 1; coalition_affairs_timer += 4
 view-if: (player_party == "m" or player_party == "sr") and player_in_gov and government_form == 0 and coalition_affairs_timer == 0
 card-image: img/portraits/TaburinChildrens.jpg
-# tags: prov_gov
+tags: prov_gov
 
 = Coalition Affairs
 
 Changes in the Provisional Government might increase political instability and popular discontent with the government.
 
 - @m_increase
+- @m_demand_premier
 - @sr_increase
+- @sr_demand_premier
+- @establish_soviet
+- @root: We do not need to do this for now.
+- @easy_discard
 
 @m_increase
 title: Increase our influence in the government.
@@ -37,12 +42,12 @@ We demand more SR representation in the cabinet, and our demand have been grudgi
 
 @m_demand_premier
 title: Demand the appointment of Irakli Tsereteli as prime minister!
-unavailable-subtitle: [? if m_k_relation < 55 and prime_minister == "Lvov": Our relation with the Kadets are not good enough. ?][? if m_sr_relation < 55 and prime_minister == "Kerensky": Our relation with the SRs are not good enough. ?]
+unavailable-subtitle: [? if m_k_relation < 55 and prime_minister == "Lvov": Our relation with the Kadets are not good enough. ?][? if m_sr_relation < 55 and prime_minister == "Kerensky": Our relation with the SRs are not good enough. ?][? if prime_minister == "Lvov" and k_coalition_dissent >= dissent_threshold - 1 : Our coalition is too fragile for such a move. ?][? if prime_minister == "Kerensky" and socialist_coalition_dissent >= dissent_threshold - 1 : Our coalition is too fragile for such a move. ?]
 view-if: player_party == "m" and prime_minister != "Tsereteli" and prime_minister_party != "Menshevik"
-choose-if: ((m_k_relation >= 55 and prime_minister == "Lvov") or (m_sr_relation >= 55 and prime_minister == "Kerensky"))
-on-arrival: prime_minister = "Tsereteli"; prime_minister_party = "Menshevik";
+choose-if: ((m_k_relation >= 55 and prime_minister == "Lvov" and k_coalition_dissent < dissent_threshold - 1) or (m_sr_relation >= 55 and prime_minister == "Kerensky" and socialist_coalition_dissent < dissent_threshold - 1))
+on-arrival: prime_minister = "Tsereteli"; prime_minister_party = "Menshevik"; k_coalition_dissent += 1
 
-Irakli Tsereteli is now prime minister of the Provisional Government.
+Our coalition partners have accepted our demands. Irakli Tsereteli is now prime minister of the Provisional Government.
 
 @sr_demand_premier
 title: Demand the appointment of Alexander Kerensky as prime minister!
@@ -51,24 +56,19 @@ view-if: player_party == "sr" and prime_minister != "Kerensky" and prime_ministe
 choose-if: ((m_k_relation >= 55 and prime_minister == "Lvov") or (m_sr_relation >= 55 and prime_minister == "Tsereteli"))
 on-arrival: prime_minister = "Kerensky"; prime_minister_party = "SR";
 
-
-@m_demand_all_socialist
-title: Demand an all-socialist government!
-unavailable-subtitle: [? if m_prov_gov_policy < 3 : We currently do not support an all-socialist government. ?][? if not m_in_exco: We must be in the Soviet leadership. ?][? if m_k_relation < 40: Our relations with the Kadets are not good enough. ?][? if m_sr_relation < 55: Our relation with the SRs are not good enough. ?]
-view-if: player_party == "m" and k_in_gov and not in_socialist_coalition
-choose-if: m_prov_gov_policy >= 3 and m_k_relation >= 40 and m_sr_relation >= 55 and m_in_exco
-
-
-
-@m_establish_soviet
+@establish_soviet
 title: Establish a Soviet government!
-view-if: player_party == "m" and government_form != 1 and m_prov_gov_policy >= 3
-choose-if: m_prov_gov_policy >= 3 and prime_minister_party == "Menshevik" and m_in_exco
+subtitle: It is time to form a government based in the Soviets!
+unavailable-subtitle: [? if (player_party = "m" and m_prov_gov_policy < 3) or (player_party = "sr" and sr_prov_gov_policy < 3): The party does not support the formation of an all-socialist government. ?][? if (player_party = "m" and m_k_relation < 40) or (player_party = "sr" and sr_k_relation < 40) : Our relations with the Kadets are not good enough. ?][? if (player_party = "m" and m_sr_relation < 55) : Our relations with the SRs are not good enough. ?][? if (player_party = "sr" and m_sr_relation < 55) : Our relations with the Mensheviks are not good enough. ?][? if not player_in_exco: We must be in the Soviet Executive Committee. ?]
+view-if:((player_party = "m" and not m_defensist_split) or (player_party = "sr" and not right_sr_split)) and not in_socialist_coalition and government_form != 1
+choose-if: (player_party = "m" and m_prov_gov_policy >= 3 and m_sr_relation >= 55 and m_k_relation >= 40 and m_in_exco) or (player_party = "sr" and sr_prov_gov_policy >= 3 and m_sr_relation >= 55 and sr_k_relation >= 40 and sr_in_exco)
+on-arrival: k_in_gov = 0; sr_in_gov = 1; m_in_gov = 1; in_socialist_coalition = 1; prime_minister = "Kerensky"; prime_minister_party = "SR"; agriculture_minister = "Chernov"; agriculture_minister_party = "SR"; justice_minister = "Kerensky"; justice_minister_party = "SR"; interior_minister = "Tsereteli"; interior_minister_party = "Menshevik"; finance_minister = "Voitinsky"; finance_minister_party = "Menshevik"; war_minister = "Verkhovsky"; war_minister_party = "SR"; foreign_minister = "Tereshchenko"; foreign_minister_party = "Independent"; transport_minister = "Plekhanov"; transport_minister_party = "Menshevik"; trade_minister = "Groman"; trade_minister_party = "Menshevik"; food_minister = "Kondratiev"; food_minister_party = "SR"; m_influence = m_sr_relation - 35; sr_influence = m_sr_relation - 45; m_k_relation -= 10; sr_k_relation -= 10; prov_gov_legitimacy += 30; workers_sr += 15*(1-sr_dissent); soldiers_sr += 15*(1-sr_dissent); workers_m += 15*(1-m_dissent); soldiers_m += 15*(1-m_dissent); government_form = 1; m_k_relation -= 10; sr_k_relation -= 10; m_b_relation += 5; b_sr_relation += 5;
+go-to: soviet_government_formation
+
+
 
 # TODO: routes to establishing a Soviet government: demanding the formation of one from the coalition partners, using prime minister powers and overall government influence,
 
-
-@sr_establish_soviet
 
 
 @m_leave_govt
@@ -78,9 +78,11 @@ title: Resign from the government.
 
 @m_shuffle_cabinet
 title: Shuffle the cabinet, and increase our representation in government.
+subtitle: Our coalition partners might be upset...
 view-if: player_party == "m" and prime_minister_party == "Menshevik" and sr_influence <= 80
 
 @sr_shuffle_cabinet
 title: Shuffle the cabinet, and increase our representation in government.
+subtitle: Our coalition partners might be upset...
 view-if: player_party == "sr" and (prime_minister_party == "SR" or prime_minister_party == "Right-SR") and sr_influence <= 80
 

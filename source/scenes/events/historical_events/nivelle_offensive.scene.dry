@@ -1,0 +1,12 @@
+title: Nivelle Offensive
+subtitle: French offensive on the Western Front
+new-page: true 
+view-if: month = 4 and week = 3
+max-visits: 1
+tags: event
+
+= Nivelle Offensive
+
+French commander-in-chief Robert Nivelle has ordered a large-scale offensive against German lines in Belgium. The offensive has been a disaster for the Entente, and French troops are on the verge of mutiny.
+
+[? if player_party != "b": The Allies are ramping up pressure on Russia to launch an offensive against Germany, in order to relieve the pressure on the Western Front. ?]

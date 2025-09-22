@@ -1,0 +1,14 @@
+title: Reichstag Peace Resolution
+subtitle: The majority of the German Reichstag calls for peace...
+new-page: true 
+view-if: month = 7 and week = 1 and not is_armistice
+max-visits: 1
+tags: event
+
+= Reichstag Peace Resolution
+
+In the German Reichstag, a vote
+
+# source: https://encyclopedia.1914-1918-online.net/article/peace-initiatives-1-1/
+
+# TODO: this makes it easier to negotiate a peace?

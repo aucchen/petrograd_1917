@@ -442,6 +442,13 @@ Q.prov_gov_efficacy = 0.7;
 Q.prov_gov_legitimacy = 80;
 
 // provisional government formations
+// coalition dissent
+// coalition dissent from the Kadets
+Q.k_coalition_dissent = 0;
+// Coalition dissent from the moderate socialists (M + SR)
+Q.socialist_coalition_dissent = 0;
+// Coalition dissent from the Bolsheviks
+Q.b_coalition_dissent = 0;
 
 //////////////////////// Petrograd Soviet
 // party names are shortened in these variables solely for convenience (bc they show up everywhere)

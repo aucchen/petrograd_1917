@@ -306,7 +306,7 @@ Foreign debt: [+ foreign_debt +]
 @defense
 title: Defense
 
-[? if is_armistice and not is_peace: An armistice with the Central Powers has been signed. ?]
+[? if is_armistice and not is_peace: An armistice with the Central Powers has been signed, but it is not yet a permanent peace treaty. ?]
 
 [? if is_peace: A peace treaty with the Central Powers has been signed. ?]
 
@@ -355,9 +355,9 @@ Garrison allegiance: Mensheviks: [+ garrison_m_loyalty : strength +], Bolsheviks
 [? if right_sr_split: Right-SRs: [+ garrison_right_sr_loyalty : strength_2 +] ?]
 [? if left_sr_split: Left-SRs: [+ garrison_left_sr_loyalty : strength_2 +] ?]
 
-
-
 [? if loyal_troops > 0 : Loyal troops (Battalions of Death): [+ loyal_troops_strength +] thousand ?]
+
+# crime rate?
 
 = Foreign Relations
 
