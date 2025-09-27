@@ -628,7 +628,10 @@ Q.loyal_troops_militancy = 0;
 
 // crime and punishment
 // somewhat arbitrary number...
-Q.crime = 10;
+// 50 = baseline level of crime
+Q.crime = 75;
+// rural unrest is what leads to land seizures.
+Q.rural_unrest = 75;
 
 // bolshevik threat
 Q.b_threat = 0;
@@ -789,7 +792,6 @@ Q.peasants_none = 10;
 
 Q.peasants_pro_prov_gov = 65;
 Q.peasants_pro_soviet = 70;
-Q.peasant_unrest = 10;
 
 Q.underclass_b = 15;
 Q.underclass_m = 5;

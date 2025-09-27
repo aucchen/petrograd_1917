@@ -1,0 +1,12 @@
+title: The End of Hunger
+subtitle: Has the famine truly ended...?
+new-page: true
+view-if: hunger < 11
+max-visits: 1
+on-arrival: end_of_hunger_timer += 200; workers_m += 3; workers_sr += 3; workers_k += 3; workers_b += 3 if not b_is_player; prov_gov_legitimacy += 20
+achievement: end_famine
+tags: event
+
+= The End of Hunger
+
+Finally, Russia's urban residents have bread. This is a significant credit to the provisional government.

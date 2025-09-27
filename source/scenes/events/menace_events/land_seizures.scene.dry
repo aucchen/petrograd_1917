@@ -1,7 +1,7 @@
 title: Land Seizures
 subtitle: Peasants are taking land reform into their own hands.
 new-page: true
-view-if: land_seizures_timer = 0 and ((land_reform = 0) or (land_reform_progress <= 4 and rural_militia_strength <= 20))
+view-if: land_seizures_timer = 0 and ((land_reform = 0) or (land_reform_progress <= 4 and rural_militia_strength <= 20)) and rural_unrest > 30
 on-arrival: land_seizures_timer += 6; food_production *= 0.98; peasants_conservative -= 6; peasants_popular_socialist -= 6; peasants_other -= 1; food_sold -= 0.005 if food_sold > 0.05
 tags: event
 
@@ -42,7 +42,7 @@ In response to the unauthorized seizures, we have formed land committees to regu
 title: Continue the land reform program to meet peasant demands.
 subtitle: -1 budget - Redistribute land to peasants.
 view-if: land_reform_progress >= 1 and has_land = 1 and ((player_party = "m" and agriculture_minister_party = "Menshevik") or (player_party = "k" and (agriculture_minister_party = "Kadet" or agriculture_minister_party = "Popular Socialist")) or (player_party = "sr" and (agriculture_minister_party = "SR" or agriculture_minister_party = "Popular Socialist")))
-on-arrival: budget -= 1; has_land = 0; land_reform = 5; land_reform_progress += 1; peasant_unrest -= 3; peasants_sr += 7*(1-sr_dissent) if sr_in_gov; peasants_k += 5*(1-k_dissent) if k_in_gov; prov_gov_legitimacy += 5; food_production *= 1.01; land_seizures_timer += 4;
+on-arrival: budget -= 1; has_land = 0; land_reform = 5; land_reform_progress += 1; rural_unrest -= 6; peasants_sr += 7*(1-sr_dissent) if sr_in_gov; peasants_k += 5*(1-k_dissent) if k_in_gov; prov_gov_legitimacy += 5; food_production *= 1.01; land_seizures_timer += 4;
 
 In response to the illegal seizures, we have begun redistributing land to the peasant communes, to be repartitioned among the households based on how much they can work. This alleviates the peasants' land hunger somewhat.
 
@@ -51,7 +51,7 @@ In response to the illegal seizures, we have begun redistributing land to the pe
 title: Continue the land reform program to meet peasant demands.
 subtitle: -3 budget - Pay for seized land.
 view-if: land_reform_progress >= 1 and has_land = 0 and ((player_party = "m" and agriculture_minister_party = "Menshevik") or (player_party = "k" and (agriculture_minister_party = "Kadet" or agriculture_minister_party = "Popular Socialist")) or (player_party = "sr" and (agriculture_minister_party = "SR" or agriculture_minister_party = "Popular Socialist")))
-on-arrival: land_reform = 2; budget -= 3; peasants_sr += 5*(1-sr_dissent) if sr_in_gov; peasant_unrest -= 1; land_reform_progress += 1; has_land = 1; land_seizures_timer += 3;
+on-arrival: land_reform = 2; budget -= 3; peasants_sr += 5*(1-sr_dissent) if sr_in_gov; rural_unrest -= 5; land_reform_progress += 1; has_land = 1; land_seizures_timer += 3;
 
 In response to the illegal seizures, we have compensated landowners for their land, and purchased more land to be redistributed later.
 
@@ -72,7 +72,7 @@ on-departure: land_reform = 1 if sr_in_gov and land_reform = 0 and player_party 
 @suppress
 title: This is too much! The peasants must stop.
 subtitle: [? if player_party = "m" and not m_in_gov: There is nothing we can do, practically, besides publish articles against the peasants. ?]
-on-arrival: peasants_m -= 2 if player_party = "m"; peasants_b -= 2 if player_party = "b"; peasants_sr -= 2 if player_party = "sr"; peasants_k -= 2 if player_party = "k"
+on-arrival: peasants_m -= 2 if player_party = "m"; peasants_b -= 2 if player_party = "b"; peasants_sr -= 2 if player_party = "sr"; peasants_k -= 2 if player_party = "k"; rural_unrest -= 2
 on-departure: land_reform = 1 if sr_in_gov and land_reform = 0 and player_party != "sr"; land_reform_progress += 1 if sr_in_gov and land_reform_progress = 0 and player_party != "sr"
 
 We have publicly criticized the peasants for their actions. What more can we do?
@@ -82,11 +82,11 @@ We have publicly criticized the peasants for their actions. What more can we do?
 [? if sr_in_gov and land_reform_progress = 0 and player_party != "sr" : The SRs in the Provisional Government have initiated a land reform program, forming land committees to allocate acquired land. ?]
 
 @suppress_2
-title: Call the militia to suppress the peasants.
+title: Call the rural militia to suppress the peasants.
 choose-if: rural_militia_strength >= 10
-view-if: ((player_party = "m" and interior_minister_party = "Menshevik") or (player_party = "k" and (interior_minister_party = "Kadet" or interior_minister_party = "Popular Socialist")) or (player_party = "sr" and (interior_minister_party = "SR" or interior_minister_party = "Popular Socialist")))
+view-if: ((player_party = "m" and interior_minister_party = "Menshevik") or (player_party = "k" and (interior_minister_party = "Kadet" or interior_minister_party = "Popular Socialist" or interior_minister_party = "Independent")) or (player_party = "sr" and (interior_minister_party = "SR" or interior_minister_party = "Popular Socialist")))
 unavailable-subtitle: We do not have a strong enough rural militia.
-on-arrival: peasants_m -= 5 if player_party = "m"; peasants_sr -= 5 if player_party = "sr"; peasants_k -= 5 if player_party = "k"; food_production *= 1.01; land_seizures_timer += 4;
+on-arrival: peasants_m -= 5 if player_party = "m"; peasants_sr -= 5 if player_party = "sr"; peasants_k -= 5 if player_party = "k"; food_production *= 1.01; land_seizures_timer += 4; rural_unrest -= rural_militia_strength
 
 We have called the newfound rural militia to restore order to the countryside, stopping the land seizures. Violence continues in the countryside.
 

@@ -335,6 +335,20 @@ Discipline: [+ discipline : efficacy +]
 
 Supply quality: [+ supply_quality : efficacy +]
 
+= Foreign Relations
+
+Relations with the West: [+ west_relation : relationships +]
+
+[? if not is_armistice: Armistice negotiations: [+ armistice_progress +] ?]
+
+[? if is_armistice: We are currently in an armistice. ?]
+
+[? if is_armistice: Peace negotiations: [+ central_negotiations +]?]
+
+
+@security
+title: Internal Security
+
 = Petrograd Forces
 
 Workers' militias: [+ workers_militia_strength +] thousand
@@ -357,17 +371,11 @@ Garrison allegiance: Mensheviks: [+ garrison_m_loyalty : strength +], Bolsheviks
 
 [? if loyal_troops > 0 : Loyal troops (Battalions of Death): [+ loyal_troops_strength +] thousand ?]
 
-# crime rate?
+= Internal Security
 
-= Foreign Relations
+Crime rate: [+ crime : war_weariness +]
 
-Relations with the West: [+ west_relation : relationships +]
-
-[? if not is_armistice: Armistice negotiations: [+ armistice_progress +] ?]
-
-[? if is_armistice: We are currently in an armistice. ?]
-
-[? if is_armistice: Peace negotiations: [+ central_negotiations +]?]
+Rural unrest: [+ crime : war_weariness +]
 
 
 @policy

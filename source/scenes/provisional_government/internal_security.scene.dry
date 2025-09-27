@@ -18,6 +18,7 @@ Following the revolution, there have been reports of increasing crime and disord
 - @recruit_militias
 - @militia_efficacy
 - @target_bolsheviks
+- @anti_crime
 - @rural_militias
 - @rural_militias_2
 - @root: We do not need new policy.
@@ -73,4 +74,7 @@ We have arrested some of the Bolsheviks who organized riots in the city, and for
 
 @anti_crime
 title: Use the militias to combat crime.
-view-if: city_militias >= 1
+view-if: city_militias >= 1 and crime > 30
+on-arrival: crime -= 6*city_militias; prov_gov_legitimacy += city_militias*3
+
+We have deployed the city militias to increase security and combat crime in Petrograd.
