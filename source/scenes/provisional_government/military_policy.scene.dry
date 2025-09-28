@@ -304,7 +304,7 @@ The enemy has a strong defensive position.
 title: Prepare the offensive.
 subtitle: -2 budget, -40 movement capacity, requires 30 military production
 choose-if: remaining_movement_capacity >= 40 and military_production >= 30
-on-arrival: soldiers_moved += 40; budget -= 2; in_offensive_battle = 1; offensive_timer += 6;
+on-arrival: soldiers_moved += 40; budget -= 2; in_offensive_battle = 1; offensive_timer += 6; total_offensives += 1
 unavailable-subtitle: [? if movement_capacity < 40 : We do not have enough free transportation capacity to support an offensive. ?][? if military_production < 30 : We do not have enough military production. ?]
 
 We have launched the offensive. May God be with us.

@@ -1,0 +1,17 @@
+title: Third Battle of Ypres
+subtitle: A British-led offensive in Belgium
+new-page: true 
+view-if: month = 7 and week = 4
+max-visits: 1
+tags: event
+
+= Third Battle of Ypres
+
+# https://encyclopedia.1914-1918-online.net/article/ypres-battles-of/
+
+# TODO: maybe this could be affected by your offensives?
+
+There is another offensive on the Western Front, a British offensive in the vicinity of the city of Ypres, already the site of multiple previous battles. The offensive quickly becomes bogged down in attritional warfare, with minor gains for the Allies and heavy casualties on both sides.
+
+[? if total_offensives = 0 : The Allied high command rues our lack of offensive initiative on the Eastern Front, and partially blames us for the failure of their offensive. ?]
+[? if total_offensives > 0 : Despite our offensive on the Eastern Front in preparation for the Western action, the Allies have not made the gains they promised. ?]

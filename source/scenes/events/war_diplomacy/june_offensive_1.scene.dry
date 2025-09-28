@@ -51,6 +51,6 @@ go-to: m_exit_gov if player_party = "m"; sr_exit_gov if player_party = "sr"
 We have resigned from the Provisional Government in protest, but nevertheless, the offensive will continue.
 
 @continue
-on-arrival: in_june_offensive = 1; june_offensive_conclusion_timer = 1; attacking = 1; offensive_timer += 8;
+on-arrival: in_june_offensive = 1; june_offensive_conclusion_timer = 1; attacking = 1; offensive_timer += 8; total_offensives += 1
 
-Everyone hopes that the offensive will be successful.
+Everyone hopes that the offensive will be successful. May God be with us.

@@ -473,6 +473,9 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
     if (Q.soldier_unrest < Q.war_weariness) {
         Q.soldier_unrest += 1;
     }
+    if (Q.soldier_unrest < Q.war_weariness + 20) {
+        Q.soldier_unrest += 1;
+    }
 
     // Calculate strengths on each of the enemy fronts - just in case the enemy might want to attack!!!
     for (var ef of Q.enemy_fronts) {
