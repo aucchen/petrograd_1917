@@ -1,7 +1,7 @@
 title: War or Peace
 subtitle: After the armistice, we must either sign a lasting peace or resume the war.
 new-page: true
-view-if: is_armistice and war_or_peace_timer = 0 and war_progress < 0
+view-if: is_armistice and not is_peace and war_or_peace_timer = 0 and war_progress < 0
 on-arrival: war_or_peace_seen += 1; war_or_peace_timer = 8; central_negotiations += 2
 tags: event
 

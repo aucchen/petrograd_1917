@@ -1,0 +1,14 @@
+title: Social Peace?
+subtitle: Unrest and instability have been reduced.
+new-page: true
+view-if: labor_unrest <= 30 and rural_unrest <= 30 and soldier_unrest <= 30 and crime <= 50 and not in_civil_war
+max-visits: 1
+on-arrival: social_peace_timer += 200; workers_m += 8 if m_in_exco or m_in_gov; workers_sr += 8 if sr_in_exco or sr_in_gov; soldiers_m += 8 if m_in_exco or m_in_gov; soldiers_sr += 8 if sr_in_exco or sr_in_gov; workers_k += 6; workers_b += 6 if b_in_gov; soldiers_b += 6 if b_in_gov; prov_gov_legitimacy += 30; social_peace = 1
+achievement: law_and_order
+tags: event
+
+# TODO: maybe if you get a coup attempt, you shouldn't get social peace lmao
+
+= Social Peace
+
+Unrest among the workers, soldiers, and peasantry has been successfully reduced, at least for now. Common crime is also on a downward trend. Russia is finally entering a time of internal peace, thanks to the policies of the [+ government_form : government_form +].

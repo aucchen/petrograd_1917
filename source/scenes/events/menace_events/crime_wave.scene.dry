@@ -27,7 +27,7 @@ What can we do?
 title: Use the city militia to restore order.
 choose-if: player_in_gov
 unavailable-subtitle: [? if not player_in_gov: We must be part of the government. ?]
-on-arrival: crime -= city_militia_strength/4*city_militia_militancy; prov_gov_legitimacy += 5 if crime < 30
+on-arrival: crime -= city_militia_strength*city_militia_militancy*unrest_modifier; prov_gov_legitimacy += 5 if crime < 30
 
 We have deployed our city militia to fight crime. A replacement for the tsarist police, the militias are comprised mostly of enthusiastic but ill-trained and equiped student volunteers. [? if crime > 5: We should improve their quality if they are to successfully combat crime. ?]
 
@@ -38,7 +38,7 @@ title: Use the workers' militias to restore order.
 view-if: (player_party = "b" or player_party = "m" or player_party = "sr")
 choose-if: player_in_exco
 unavailable-subtitle: [? if not player_in_exco : We must be part of the Soviet Executive Committee. ?]
-on-arrival: crime -= workers_militia_strength/4*workers_militia_militancy; prov_gov_legitimacy += 5 if crime < 30
+on-arrival: crime -= workers_militia_strength*workers_militia_militancy*unrest_modifier; prov_gov_legitimacy += 5 if crime < 30
 
 We have deployed the workers' militia to fight crime. In the working-class neighborhoods, they have already been successful in deterring criminal activity. [? if crime > 5 : Now, we will see if they can be effective in other parts of the city. ?]
 
@@ -52,7 +52,7 @@ unavailable-subtitle: [? if not player_in_gov: We must be part of the government
 
 @economic_change
 title: Only economic change can reduce the causes of crime.
-on-arrival: crime -= 8 if inflation <= 50 and crime > 30; crime -= 6 if inflation <= 20 and crime > 1; crime -= 6 if hunger < 20; prov_gov_legitimacy += 5 if crime < 30
+on-arrival: crime -= 8*unrest_modifier if inflation <= 50 and crime > 30; crime -= 6*unrest_modifier if inflation <= 20 and crime > 30; crime -= 6*unrest_modifier if hunger < 20; prov_gov_legitimacy += 5 if crime < 30
 
 [? if inflation <= 50: Our inflation rates, while still high, are no longer at their peak. ?][? if hunger < 20: Rates of hunger have been lowered, which should lower the rates of economic crime. ?][? if inflation > 50 and hunger > 20 : Unfortunately, the economic suffering continues, and so will the crime wave. ?]
 

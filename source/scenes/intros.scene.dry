@@ -77,21 +77,21 @@ Which points should be included in the order?
 @o1_committees
 go-to: o1_soviet_menu
 max-visits: 1
-on-arrival: o1_points += 1; o1_committees = 1
+on-arrival: o1_points += 1; o1_committees = 1; soldier_unrest -= 4;
 
 We have declared that soldiers' committees will be formed, and that these committees will control the soldiers' weapons.
 
 @o1_address
 go-to: o1_soviet_menu
 max-visits: 1
-on-arrival: o1_points += 1; o1_address = 1
+on-arrival: o1_points += 1; o1_address = 1; soldier_unrest -= 4;
 
 We have declared that soldiers must be referred to using respectful terms of address, and cannot be verbally humiliated by officers.
 
 @o1_rights
 go-to: o1_soviet_menu
 max-visits: 1
-on-arrival: o1_points += 1; o1_rights = 1
+on-arrival: o1_points += 1; o1_rights = 1; soldier_unrest -= 4;
 
 We have declared that soldiers will have the same rights as civilians when off-duty.
 

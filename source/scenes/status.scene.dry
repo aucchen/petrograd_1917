@@ -371,11 +371,16 @@ Garrison allegiance: Mensheviks: [+ garrison_m_loyalty : strength +], Bolsheviks
 
 [? if loyal_troops > 0 : Loyal troops (Battalions of Death): [+ loyal_troops_strength +] thousand ?]
 
-= Internal Security
+= Social Issues
+
+Labor unrest: [+ labor_unrest : war_weariness +]
+
+Rural unrest: [+ rural_unrest : war_weariness +]
+
+Soldier unrest: [+ soldier_unrest : war_weariness +]
 
 Crime rate: [+ crime : war_weariness +]
 
-Rural unrest: [+ crime : war_weariness +]
 
 
 @policy

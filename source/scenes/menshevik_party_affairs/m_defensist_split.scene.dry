@@ -11,6 +11,9 @@ Q.garrison_parties.push('defensist');
 
 Q.m_k_relation -= 8;
 
+// reduce the strength of the split faction
+Q.defensist_strength = Q.defensist_strength*0.3;
+
 // renormalize party support
 var total_support = Q.internationalist_strength + Q.defensist_strength + Q.social_patriot_strength;
 Q.internationalist_strength = Q.internationalist_strength/total_support;

@@ -4,4 +4,4 @@ new-page: true
 is-card: true
 is-pinned-card: true
 card-image: img/soviet_leaders.jpg
-go-to: m_shuffle_leadership
+go-to: m_shuffle_leadership.rm_main

@@ -1,7 +1,7 @@
 title: Military Disorder
 subtitle: Desertions, attacks on officers, refusals to follow orders...
 new-page: true
-view-if: military_disorder_timer = 0 and soldier_unrest >= 8 and not is_armistice and not is_peace
+view-if: military_disorder_timer = 0 and soldier_unrest > 30 and not is_armistice and not is_peace
 on-arrival: military_disorder_timer += 6; discipline *= 0.9; morale *= 0.95; northern_front_soldiers -= 1 if northern_front_soldiers > 0; western_front_soldiers -= 1 if western_front_soldiers > 0; southwestern_front_soldiers -= 1 if southwestern_front_soldiers > 0; romanian_front_soldiers -= 1 if romanian_front_soldiers > 0; reserve_soldiers -= 1 if reserve_soldiers > 0;
 tags: event
 
@@ -24,7 +24,7 @@ Our propaganda is aimed at accentuating the soldiers' struggle against the arist
 @councils_discipline
 title: Task the soldiers' councils to restore discipline.
 view-if: (player_party = "sr" and sr_in_exco) or (player_party = "m" and m_in_exco) or (player_party = "b" and b_in_exco)
-on-arrival: soldier_unrest -= 1; morale += 0.01; discipline += 0.01
+on-arrival: soldier_unrest -= 10*unrest_modifier; morale += 0.01; discipline += 0.01
 
 Commissars from the Petrograd Soviet have been sent to the frontlines to guide the soldiers' councils into restoring order. This is very slightly effective in restoring morale and discipline.
 
@@ -32,13 +32,13 @@ Commissars from the Petrograd Soviet have been sent to the frontlines to guide t
 @restore_discipline
 title: Impose harsher punishments to restore discipline.
 view-if: (player_party = "sr" and sr_in_gov) or (player_party = "m" and m_in_gov) or (player_party = "k" and k_in_gov)
-on-arrival: soldier_unrest -= 1; discipline += 0.02; morale -= 0.01; soldiers_m -= 5 if m_in_gov; soldiers_sr -= 5 if sr_in_gov; soldiers_k -= 5 if k_in_gov; soldiers_other -= 5; m_b_relation -= 5 if m_in_gov and not b_in_gov; b_sr_relation -= 5 if sr_in_gov and not b_in_gov; soldiers_b += 5 if not b_in_gov
+on-arrival: soldier_unrest -= 10*unrest_modifier; discipline += 0.02; morale -= 0.01; soldiers_m -= 5 if m_in_gov; soldiers_sr -= 5 if sr_in_gov; soldiers_k -= 5 if k_in_gov; soldiers_other -= 5; m_b_relation -= 5 if m_in_gov and not b_in_gov; b_sr_relation -= 5 if sr_in_gov and not b_in_gov; soldiers_b += 5 if not b_in_gov
 
 The government has imposed harsher punishments for deserters. This is effective in restoring discipline, but morale is still low, and the soldiers' political allegiances are falling towards the Bolsheviks.
 
 @nothing
 title: There is nothing we can do.
-on-arrival: soldier_unrest -= 1 if k_in_gov; soldiers_k -= 4 if k_in_gov; soldiers_m -= 4 if m_in_gov; soldiers_sr -= 3 if sr_in_gov; soldiers_other -= 5
+on-arrival: soldier_unrest -= 4*unrest_modifier if k_in_gov; soldiers_k -= 4 if k_in_gov; soldiers_m -= 4 if m_in_gov; soldiers_sr -= 3 if sr_in_gov; soldiers_other -= 5
 
 [? if k_in_gov: The Kadets in the Provisional Government take action by restoring the death penalty for deserting troops. ?]
 

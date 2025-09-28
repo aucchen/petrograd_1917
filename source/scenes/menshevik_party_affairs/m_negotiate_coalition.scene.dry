@@ -5,7 +5,7 @@ on-arrival: m_negotiate_coalition_timer += 4; week_actions += 1
 frequency: 100
 is-card: true
 card-image: img/newspapers.jpg
-tags: m_party
+#tags: m_party
 
 = Negotiating the Coalition
 

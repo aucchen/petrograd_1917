@@ -632,6 +632,12 @@ Q.loyal_troops_militancy = 0;
 Q.crime = 75;
 // rural unrest is what leads to land seizures.
 Q.rural_unrest = 75;
+// labor unrest is what leads to strikes
+Q.labor_unrest = 75;
+// Soldier unrest is what leads to military disorder.
+Q.soldier_unrest = 75;
+// modifier for unrest suppression difficulty - higher means it's easier to reduce unrest.
+Q.unrest_modifier = 1;
 
 // bolshevik threat
 Q.b_threat = 0;
@@ -765,7 +771,6 @@ Q.workers_none = 10;
 
 Q.workers_pro_prov_gov = 85;
 Q.workers_pro_soviet = 95;
-Q.labor_unrest = 10;
 
 Q.middle_b = 5;
 Q.middle_m = 10;
@@ -819,7 +824,6 @@ Q.soldiers_none = 10;
 // this rises a lot due to Order Number 1
 Q.soldiers_pro_prov_gov = 50;
 Q.soldiers_pro_soviet = 60;
-Q.soldier_unrest = 10;
 
 Q.elites_b = 0;
 Q.elites_m = 2;
@@ -1044,20 +1048,21 @@ Difficulty affects starting resources and inter-party relations, as well as how 
 
 @easy_mode
 title: Single Player (Easy)
-on-arrival: difficulty = -1; m_resources = 4; sr_resources = 4; k_resources = 5; b_resources = 4; m_dues = 3; sr_dues = 3; b_dues = 3; m_k_relation = 50; m_sr_relation = 62; sr_k_relation = 50; m_split_threshold = 65; sr_split_threshold = 65; m_support_change = 10; sr_support_change = 10; m_discipline_change = 8; sr_discipline_change = 8; max_advisors = 5; ipr_change = 8;
+on-arrival: difficulty = -1; m_resources = 4; sr_resources = 4; k_resources = 5; b_resources = 4; m_dues = 3; sr_dues = 3; b_dues = 3; m_k_relation = 50; m_sr_relation = 62; sr_k_relation = 50; m_split_threshold = 65; sr_split_threshold = 65; m_support_change = 10; sr_support_change = 10; m_discipline_change = 8; sr_discipline_change = 8; max_advisors = 5; ipr_change = 8; unrest_modifier = 1.6
 go-to: party_selection
 
 Select a party:
 
 @single_player
 title: Single Player (Normal)
+on-arrival: unrest_modifier = 1
 go-to: party_selection
 
 Select a party:
 
 @hard_mode
 title: Single Player (Hard)
-on-arrival: difficulty = 1; m_resources = 2; sr_resources = 2; k_resources = 2; b_resources = 0; b_dues = 0; m_split_threshold = 50; sr_split_threshold = 50; m_support_change = 5; sr_support_change = 5; m_discipline_change = 4; sr_discipline_change = 4; max_advisors = 3; ipr_change = 5;
+on-arrival: difficulty = 1; m_resources = 2; sr_resources = 2; k_resources = 2; b_resources = 0; b_dues = 0; m_split_threshold = 50; sr_split_threshold = 50; m_support_change = 5; sr_support_change = 5; m_discipline_change = 4; sr_discipline_change = 4; max_advisors = 3; ipr_change = 5; unrest_modifier = 0.7
 go-to: party_selection
 
 Select a party:

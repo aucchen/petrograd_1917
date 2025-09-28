@@ -62,6 +62,11 @@ on-arrival: rural_militia_strength += 10*prov_gov_efficacy; rural_militia_milita
 
 We have increased the size and strength of our rural milita.
 
+@rural_suppress
+title: Use the rural militias to suppress peasant unrest in the countryside.
+view-if: rural_militia_strength >= 10
+on-arrival: rural_unrest -= rural_militia_strength*unrest_modifier;
+
 @target_bolsheviks
 title: Persecute the Bolsheviks, anarchists, and other malcontents.
 unavailable-subtitle: Our city militias are not effective enough.
@@ -75,6 +80,6 @@ We have arrested some of the Bolsheviks who organized riots in the city, and for
 @anti_crime
 title: Use the militias to combat crime.
 view-if: city_militias >= 1 and crime > 30
-on-arrival: crime -= 6*city_militias; prov_gov_legitimacy += city_militias*3
+on-arrival: crime -= 6*city_militias*unrest_modifier; prov_gov_legitimacy += city_militias*3
 
 We have deployed the city militias to increase security and combat crime in Petrograd.

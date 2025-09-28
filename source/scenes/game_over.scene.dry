@@ -197,6 +197,14 @@ go-to: eg_menu
 
 The Germans have taken over Petrograd. The revolution is over. We have lost.
 
+@social_peace
+title: Social Peace
+view-if: social_peace = 1
+tags: endings
+go-to: eg_menu
+
+Finally, unrest among the working classes, soldiers, and peasantry has ended.
+
 
 @achievements
 title: Achievements
@@ -243,6 +251,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_low_inflation : **Прекращение эмиссии (Stopping the printers)** - inflation is somewhat under control. ?]
 
+[? if game_achievement_law_and_order : **Правопорядок (Law and Order)** - reduce unrest among the working classes, soldiers, and peasantry. ?]
+
 [? if game_achievement_kornilovite : **Корниловцы (Kornilovite)** - successfully launch a military coup. ?]
 
 [? if game_achievement_coup_defeated: **Корниловцы разгромлены (Kornilovites defeated)** - attempt to launch a coup and fail. ?]
@@ -285,6 +295,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if achievement_low_inflation : **Прекращение эмиссии (Stopping the printers)** - inflation is somewhat under control. ?]
 
+[? if achievement_law_and_order : **Правопорядок (Law and Order)** - reduce unrest among the working classes, soldiers, and peasantry. ?]
+
 [? if achievement_kornilovite : **Корниловцы (Kornilovite)** - successfully launch a military coup. ?]
 
 [? if achievement_coup_defeated: **Корниловцы разгромлены (Kornilovites defeated)** - attempt to launch a coup and fail. ?]
@@ -326,6 +338,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_end_famine : **Конец голода (The end of hunger)** - hunger has been reduced to a low level. ?]
 
 [? if not achievement_low_inflation : **Прекращение эмиссии (Stopping the printers)** - inflation is somewhat under control. ?]
+
+[? if not achievement_law_and_order : **Правопорядок (Law and Order)** - reduce unrest among the working classes, soldiers, and peasantry. ?]
 
 [? if not achievement_kornilovite : **Корниловцы (Kornilovite)** - successfully launch a military coup. ?]
 

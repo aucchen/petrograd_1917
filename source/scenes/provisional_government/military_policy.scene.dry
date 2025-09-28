@@ -178,10 +178,12 @@ We have added [+ sm +] divisions to the Caucasus Front.
 @demobilize
 title: Demobilize some reserve troops, returning them to civilian life.
 subtitle: If we demobilize enough soldiers, we can save some budget.
-on-arrival: reserve_soldiers -= sm; soldiers_moved += sm; soldiers_demobilized += sm; budget += 2 if soldiers_demobilized >= 50; unemployed += 0.3 if soldiers_demobilized >= 50; soldiers -= 1 if soldiers_demobilized >= 50; workers += 0.2 if soldiers_demobilized >= 50; peasants += 0.5 if soldiers_demobilized >= 50; unemployed += 0.3 if soldiers_demobilized >= 50; food_production += 1000 if soldiers_demobilized >= 50; industry += 0.5 if soldiers_demobilized >= 50;
+on-arrival: reserve_soldiers -= sm; soldiers_demobilized += sm; budget += 2 if soldiers_demobilized >= 50; unemployed += 0.3 if soldiers_demobilized >= 50; soldiers -= 1 if soldiers_demobilized >= 50; workers += 0.2 if soldiers_demobilized >= 50; peasants += 0.5 if soldiers_demobilized >= 50; food_production += 1000 if soldiers_demobilized >= 50; industry += 0.5 if soldiers_demobilized >= 50; food_requisitioned -= 0.004 if soldiers_demobilized >= 50; food_sold += 0.003 if soldiers_demobilized >= 50
 choose-if: remaining_movement_capacity > 0 and reserve_soldiers > sm
 on-departure: soldiers_demobilized = 0 if soldiers_demobilized >= 50
 go-to: reallocate
+
+# update: demobilization doesn't count for transportation capacity.
 
 We have demobilized [+ sm +] divisions from the reserve.
 
@@ -318,7 +320,7 @@ We have built up our defenses along all fronts.
 
 @restore_discipline
 title: Restore military discipline.
-on-arrival: discipline += 0.05; morale -= 0.03; soldiers_m -= 5 if m_in_gov; soldiers_k -= 5 if k_in_gov; soldiers_sr -= 5 if sr_in_gov; soldiers_b += 5*(1-b_dissent) if not b_in_gov; soldier_unrest -= 1
+on-arrival: discipline += 0.05; morale -= 0.03; soldiers_m -= 5 if m_in_gov; soldiers_k -= 5 if k_in_gov; soldiers_sr -= 5 if sr_in_gov; soldiers_b += 5*(1-b_dissent) if not b_in_gov; soldier_unrest -= 10*unrest_modifier
 
 We have restored some measure of military discipline to the ranks. This can raise discipline, but lowers morale slightly, and angers the soldiers.
 

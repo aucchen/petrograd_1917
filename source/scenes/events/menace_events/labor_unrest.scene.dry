@@ -1,7 +1,7 @@
 title: Labor Unrest
 subtitle: A wave of strikes affecting industry.
 new-page: true
-view-if: labor_unrest_timer = 0 and labor_unrest >= 10
+view-if: labor_unrest_timer = 0 and labor_unrest >= 40
 on-arrival: labor_unrest_timer += 6; industry *= 0.98;
 tags: event
 
@@ -11,7 +11,9 @@ A wave of strikes is roiling Russia's factories. The revolution has given worker
 
 What can we do?
 
-#- @8_hour
+- @8_hour
+- @8_hour_soviet
+- @8_hour_soviet_b
 - @support
 - @concessions
 - @suppress
@@ -25,7 +27,7 @@ subtitle: Use the city militias and loyal troops if we must. This will be danger
 unavailable-subtitle: The city militias are not strong enough.
 view-if: ((player_party = "k" and k_in_gov) or (player_party = "m" and m_in_gov) or (player_party = "sr" and sr_in_gov))
 choose-if: loyal_troops_strength + city_militia_strength > workers_militia_strength
-on-arrival: workers_m -= 8 if m_in_gov; workers_sr -= 5 if sr_in_gov; workers_k -= 15; workers_b += 8*(1-b_dissent); labor_unrest -= 5; city_militia_independent += 10; city_militia_strength *= 0.65; prov_gov_legitimacy -= 10; industry *= 1.01
+on-arrival: workers_m -= 8 if m_in_gov; workers_sr -= 8 if sr_in_gov; workers_k -= 15; workers_b += 8*(1-b_dissent); labor_unrest -= 10*unrest_modifier; city_militia_independent += 10; city_militia_strength *= 0.8; prov_gov_legitimacy -= 10; industry *= 1.01; labor_unrest_timer += 4
 
 We have given the order to suppress the strikes with force if necessary. And force was used. This is a dark day in Russian history, another Bloody Sunday, an action that one would think only the Tsars would commit.
 
@@ -34,32 +36,53 @@ Many members of the city militia have chosen to resign rather than commit anothe
 @8_hour
 title: The Provisional Government should legislate the 8-hour workday.
 view-if: ((player_party = "k" and k_in_gov) or (player_party = "m" and m_in_gov) or (player_party = "sr" and sr_in_gov)) and workday = 0
-on-arrival: monthly_inflation += 0.2; capital_flight_progress += 1; workers_m += 5*(1-m_dissent) if m_in_exco; workers_sr += 5*(1-sr_dissent) if sr_in_exco; workers_b += 5*(1-b_dissent) if b_in_exco; m_k_relation -= 4 if m_in_exco; sr_k_relation -= 4 if sr_in_exco; prov_gov_soviet_cooperation -= 0.02; income += 1; labor_unrest -= 3;
+on-arrival: monthly_inflation += 0.2; capital_flight_progress += 1; industry *= 0.95; workers_m += 6*(1-m_dissent) if m_in_gov; workers_sr += 6*(1-sr_dissent) if sr_in_gov; workers_b += 5*(1-b_dissent) if b_in_gov; m_k_relation += 6 if player_party = "k"; sr_k_relation += 6 if player_party = "k"; income += 1; labor_unrest -= 15*unrest_modifier; workday = 1; labor_unrest_timer += 6; prov_gov_legitimacy += 5;
+
+Legislating the 8-hour workday mollifies many of the workers' demands. However, this reduces industrial production.
+
+@8_hour_soviet
+title: The Soviet will negotiate with employers for an 8-hour workday.
+view-if: ((player_party = "b" and b_in_exco) or (player_party = "m" and m_in_exco) or (player_party = "sr" and sr_in_exco)) and workday = 0
+on-arrival: monthly_inflation += 0.2; capital_flight_progress += 1; industry *= 0.96; workers_m += 6*(1-m_dissent); workers_sr += 6*(1-sr_dissent); workers_b += 5*(1-b_dissent) if player_party = "b"; m_k_relation -= 4 if player_party != "k"; sr_k_relation -= 4 if player_party != "k"; income += 1; labor_unrest -= 15*unrest_modifier; workday = 1; labor_unrest_timer += 6; prov_gov_legitimacy += 5;
+
+Enacting the 8-hour workday mollifies many of the workers' demands. However, this reduces industrial production.
+
+@8_hour_soviet_b
+title: The Soviet has negotiated with employers for an 8-hour workday.
+view-if: ((player_party = "b" and not b_in_exco) or (player_party = "k" and not k_in_exco) or (player_party = "m" and not m_in_exco) or (player_party = "sr" and not sr_in_exco)) and workday = 0
+on-arrival: monthly_inflation += 0.2; capital_flight_progress += 1; industry *= 0.96; workers_m += 6*(1-m_dissent); workers_sr += 6*(1-sr_dissent); workers_b += 5*(1-b_dissent) if player_party = "b"; m_k_relation -= 4 if player_party != "k"; sr_k_relation -= 4 if player_party != "k"; income += 1; labor_unrest -= 15*unrest_modifier; workday = 1; labor_unrest_timer += 6; prov_gov_legitimacy += 5;
+
+# See Wade p.90
+
+Acting independently, the Petrograd Soviet has negotiated with employers to enact an 8-hour workday. Enacting the 8-hour workday mollifies many of the workers' demands. However, this reduces industrial production.
+
+
+
 
 @concessions
 title: The Provisional Government should negotiate minor concessions by both sides.
-view-if: ((player_party = "k" and k_in_gov) or (player_party = "m" and m_in_gov) or (player_party = "sr" and sr_in_gov))
-on-arrival: monthly_inflation += 0.05; workers_m += 2*(1-m_dissent) if m_in_gov; workers_sr += 2*(1-sr_dissent) if sr_in_gov; workers_b += 2*(1-b_dissent) if b_in_gov; workers_k += 2*(1-k_dissent) if k_in_gov; income += 1; labor_unrest -= 2; industry *= 1.01; unemployed += 0.1
+view-if: ((player_party = "k" and k_in_gov and workday = 1) or (player_party = "m" and m_in_gov) or (player_party = "sr" and sr_in_gov))
+on-arrival: monthly_inflation += 0.05; workers_m += 2*(1-m_dissent) if m_in_gov; workers_sr += 2*(1-sr_dissent) if sr_in_gov; workers_b += 2*(1-b_dissent) if b_in_gov; workers_k += 2*(1-k_dissent) if k_in_gov; income += 1; labor_unrest -= 5; industry *= 1.01; unemployed += 0.1; prov_gov_legitimacy += 4; labor_unrest_timer += 2
 
 We have negotiated for minor concessions from employers, and some tactical retreat by the workers. The workers are not entirely happy about the deals, but they see us as on their side, for now.
 
 @soviet_help
 title: The Soviet should support the workers' demands for higher wages and improved working conditions.
 view-if: ((player_party = "b" and b_in_exco) or (player_party = "m" and m_in_exco) or (player_party = "sr" and sr_in_exco) or (player_party = "k" and k_in_exco))
-on-arrival: monthly_inflation += 0.1; capital_flight_progress += 1; workers_m += 5*(1-m_dissent) if m_in_exco; workers_sr += 5*(1-sr_dissent) if sr_in_exco; workers_b += 5*(1-b_dissent) if b_in_exco; m_k_relation -= 4 if m_in_exco; sr_k_relation -= 4 if sr_in_exco; prov_gov_soviet_cooperation -= 0.02; income += 1; labor_unrest -= 3; unemployed += 0.6
+on-arrival: monthly_inflation += 0.1; capital_flight_progress += 1; workers_m += 5*(1-m_dissent) if m_in_exco; workers_sr += 5*(1-sr_dissent) if sr_in_exco; workers_b += 5*(1-b_dissent) if b_in_exco; m_k_relation -= 4 if m_in_exco; sr_k_relation -= 4 if sr_in_exco; prov_gov_soviet_cooperation -= 0.02; income += 1; labor_unrest -= 5; unemployed += 0.6
 
 We have supported the workers in their economic demands and their struggles with their employers. Strikes are ended with agreements favorable to workers. The employers are somewhat displeased, and higher wages without increased production can lead to more inflation.
 
 @soviet_stop
 title: The Soviet should convince the workers to stop striking.
 view-if: ((player_party = "b" and b_in_exco) or (player_party = "m" and m_in_exco) or (player_party = "sr" and sr_in_exco) or (player_party = "k" and k_in_exco))
-on-arrival: workers_m -= 4 if m_in_exco; workers_sr -= 4 if sr_in_exco; workers_b -= 4 if b_in_exco; workers_b += 5 if not b_in_exco; labor_unrest -= 3; production *= 1.02;
+on-arrival: workers_m -= 4 if m_in_exco; workers_sr -= 4 if sr_in_exco; workers_b -= 4 if b_in_exco; workers_b += 5 if not b_in_exco; labor_unrest -= 5; production *= 1.02;
 
 The Soviet propaganda organs exhort the workers to stop striking for the sake of stability and unity. Eventually the workers do stop, but the Soviet parties are tainted in the eyes of the workers.
 
 @support
 title: Support the strikes rhetorically.
-view-if: (player_party = "b" or player_party = "m" or player_party = "sr")
+view-if: (player_party = "b" or player_party = "m" or player_party = "sr") and workday = 1
 on-arrival: labor_unrest -= 1; monthly_inflation += 0.1;
 
 We have supported the strikers with our propaganda, without taking any actions. This might absolve us of any responsibility for their success or failure.
@@ -67,6 +90,7 @@ We have supported the strikers with our propaganda, without taking any actions. 
 
 @nothing
 title: There is nothing we can do.
+view-if: workday = 1
 on-arrival: workers_m -= 6 if player_party = "m"; workers_sr -= 6 if player_party = "sr"; workers_b -= 6 if player_party = "b"; workers_k -= 6 if player_party = "k";
 
 There is nothing we can do. The strikes end by themselves, with negotiations from both sides.

@@ -283,6 +283,7 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
     }
     if (Q.rural_hunger > 0) {
         Q.food_sold -= 0.01;
+        Q.rural_unrest += 1;
     }
 
     // civilian production effects on inflation and food_sold /////////
@@ -391,6 +392,9 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
             Q.workers_sr -= 0.3;
             Q.soldiers_sr -= 0.2;
         }
+        if (Q.labor_unrest < 50) {
+            Q.labor_unrest += 0.5;
+        }
     }
     if (Q.hunger >= 40 && (Q.war_weariness >= 30 || Q.monthly_inflation >= 4)) {
         Q.prov_gov_legitimacy -= 0.5;
@@ -416,8 +420,11 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
             Q.workers_sr -= 0.3;
             Q.soldiers_sr -= 0.2;
         }
+        if (Q.labor_unrest < 75) {
+            Q.labor_unrest += 0.5;
+        }
     }
-    if (Q.hunger >= 50) {
+    if (Q.hunger >= 50 || Q.monthly_inflation >= 15) {
         Q.prov_gov_legitimacy -= 1;
         if (!Q.b_in_gov) {
             Q.workers_b += 0.3;
@@ -441,6 +448,9 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
             Q.workers_sr -= 0.3;
             Q.soldiers_sr -= 0.2;
         }
+        if (Q.labor_unrest < 100) {
+            Q.labor_unrest += 0.5;
+        }
     }
 
     // militia loyalties are affected by support... /////////
@@ -456,6 +466,12 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
     // War exhaustion changes - increase by 1 every week
     if (!Q.is_armistice && !Q.is_peace && Q.month >= 4) {
         Q.war_weariness += 1;
+        Q.soldier_unrest += 0.2;
+    }
+
+    // Soldier unrest increases up to war weariness...
+    if (Q.soldier_unrest < Q.war_weariness) {
+        Q.soldier_unrest += 1;
     }
 
     // Calculate strengths on each of the enemy fronts - just in case the enemy might want to attack!!!

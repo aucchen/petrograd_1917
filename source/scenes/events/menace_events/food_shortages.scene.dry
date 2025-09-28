@@ -2,7 +2,7 @@ title: Food Shortages
 subtitle: Hunger reigns in the cities...
 new-page: true
 view-if: hunger >= 25 and food_shortages_timer = 0
-on-arrival: food_shortages_timer += 6; workers_none += 4; workers_m -= 3; workers_sr -= 3; workers_k -= 4; workers_other -= 1; workers_anarchist += 1; workers_b += 3 if not b_is_player; prov_gov_legitimacy -= 4; coup_progress += 1
+on-arrival: food_shortages_timer += 6; workers_none += 4; workers_m -= 3; workers_sr -= 3; workers_k -= 4; workers_other -= 1; workers_anarchist += 1; workers_b += 3 if not b_is_player; prov_gov_legitimacy -= 4; coup_progress += 1; labor_unrest += 2 if labor_unrest < 70; crime_rate += 3 if crime < 50
 face-image: img/breadline.jpg
 tags: event
 

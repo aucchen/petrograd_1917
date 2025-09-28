@@ -11,6 +11,8 @@ Q.city_militia_parties.push('right_sr');
 
 Q.sr_k_relation -= 10;
 
+Q.right_sr_strength *= 0.5;
+
 // renormalize party support
 var total_support = Q.left_sr_strength + Q.center_sr_strength + Q.right_sr_strength;
 Q.left_sr_strength = Q.left_sr_strength/total_support;

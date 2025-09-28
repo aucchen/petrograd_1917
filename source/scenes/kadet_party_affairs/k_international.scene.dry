@@ -5,7 +5,6 @@ is-card: true
 on-arrival: k_international_timer += 4; week_actions += 1
 card-image: img/kadet_2.jpg
 max-visits: 12
-tags: k_party
 
 = International Relations
 

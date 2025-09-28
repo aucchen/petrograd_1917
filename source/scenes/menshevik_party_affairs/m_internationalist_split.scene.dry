@@ -9,6 +9,8 @@ Q.garrison_parties.push('internationalist');
 
 Q.m_b_relation -= 8;
 
+Q.internationalist_strength *= 0.3;
+
 // renormalize party support
 var total_support = Q.internationalist_strength + Q.defensist_strength + Q.social_patriot_strength;
 Q.internationalist_strength = Q.internationalist_strength/total_support;
