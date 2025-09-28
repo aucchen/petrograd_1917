@@ -20,6 +20,7 @@ Urban food supply: [+ food_supply_urban +] million kg/year
 
 Food shortage: [+ hunger +]% 
 
+#- @demilitarization
 - @state_buyer
 - @increase_price
 - @root: No action is needed.
@@ -41,6 +42,18 @@ on-arrival: budget -= 2; grain_price += 1; food_sold += 0.015*prov_gov_efficacy;
 view-if: grain_monopoly = 1
 
 We have increased the price of grain paid out to farmers. This is a strain on our budget, but it could induce more farmers to sell.
+
+# demilitarization is not implemented here because the same things are done in military_policy
+
+@demilitarization
+title: End military requisitioning of grain.
+subtitle: Now that we are at peace, we can return food to the cities.
+view-if: is_armistice or is_peace
+choose-if: southwestern_front_soldiers < 50 and northern_front_soldiers < 50 and western_front_soldiers < 50 and romanian_front_soldiers < 50
+unavailable-subtitle: There are still too many soldiers in the field.
+max-visits: 1
+on-arrival: food_sold += food_requisitioned; food_requisitioned = 0;
+
 
 @reduce_rations
 title: Reduce food rations.

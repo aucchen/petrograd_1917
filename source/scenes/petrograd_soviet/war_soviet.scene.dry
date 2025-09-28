@@ -25,12 +25,12 @@ max-visits: 1
 
 @discipline
 title: Support discipline in the military.
-on-arrival: discipline += 0.05*soviet_efficacy; morale -= 0.01; soldiers_m -= 4 if m_in_exco; soldiers_sr -= 4 if sr_in_exco; soldiers_b -= 4 if b_in_exco
+on-arrival: discipline += 0.05*soviet_efficacy; morale -= 0.01; soldiers_m -= 4 if m_in_exco; soldiers_sr -= 4 if sr_in_exco; soldiers_b -= 4 if b_in_exco; soldier_unrest -= 5*unrest_modifier;
 
 Despite our support for soldiers' rights, there must be a balance for the functioning of the army. Thus, we are allowing the reinstatement of some forms of military discipline. The soldiers are displeased about this, of course.
 
 @order1
 title: Work on preventing abuses by officers.
-on-arrival: morale += 0.05*soviet_efficacy; discipline -= 0.01; soldiers_m += 4*(1-m_dissent)*soviet_efficacy if m_in_exco; soldiers_sr += 5*(1-sr_dissent)*soviet_efficacy if sr_in_exco; soldiers_b += 5*(1-b_dissent)*soviet_efficacy if b_in_exco
+on-arrival: morale += 0.05*soviet_efficacy; discipline -= 0.01; soldiers_m += 4*(1-m_dissent)*soviet_efficacy if m_in_exco; soldiers_sr += 5*(1-sr_dissent)*soviet_efficacy if sr_in_exco; soldiers_b += 5*(1-b_dissent)*soviet_efficacy if b_in_exco; soldier_unrest -= 5*unrest_modifier;
 
 We must continue to enforce Order No. 1, our order aimed at giving the soldiers equal rights. This might reduce discipline, but increase morale and support of the soldiers for the Soviet.

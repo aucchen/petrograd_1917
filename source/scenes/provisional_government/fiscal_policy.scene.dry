@@ -90,7 +90,7 @@ We have taken out a new set of foreign loans.
 subtitle: +2 budget - cut government salaries and benefits.
 unavailable-subtitle: There is nothing left to cut.
 choose-if: spending > -5
-on-arrival: budget += 2; spending -= 2; middle_none += 5; workers_none += 5; soldiers_none += 5;  workers_m -= 3 if player_party = "m"; workers_sr -= 3 if player_party = "sr"; workers_k -= 3 if player_party = "k"; middle_m -= 3 if player_party = "m"; middle_sr -= 3 if player_party = "sr"; middle_k -= 3 if player_party = "k"; soldiers_m -= 5 if player_party = "m"; soldiers_sr -= 5 if player_party = "sr"; soldiers_k -= 5 if player_party = "k"; train_capacity *= 0.99; morale -= 0.04; benefits -= 1; monthly_inflation -= 0.4; prov_gov_efficacy -= 0.06;
+on-arrival: budget += 2; spending -= 2; middle_none += 5; workers_none += 5; soldiers_none += 5;  workers_m -= 3 if player_party = "m"; workers_sr -= 3 if player_party = "sr"; workers_k -= 3 if player_party = "k"; middle_m -= 3 if player_party = "m"; middle_sr -= 3 if player_party = "sr"; middle_k -= 3 if player_party = "k"; soldiers_m -= 5 if player_party = "m"; soldiers_sr -= 5 if player_party = "sr"; soldiers_k -= 5 if player_party = "k"; train_capacity *= 0.99; morale -= 0.04; benefits -= 1; monthly_inflation -= 0.4; prov_gov_efficacy -= 0.06; labor_unrest += 2; capital_flight_progress -= 2
 
 Cutting the budget hurts the workers and middle class, and also reduces the morales of the soldiers and railroad workers, two of the largest groups of government employees. This makes them less effective at their jobs.
 

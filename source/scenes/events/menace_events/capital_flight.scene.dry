@@ -1,7 +1,7 @@
 title: Capital Flight
 subtitle: Capitalists are closing down their plants and moving assets out of the country.
 new-page: true
-view-if: capital_flight_progress >= 10 and capital_flight_timer = 0
+view-if: capital_flight_progress >= 10 and capital_flight_timer = 0 and industries_nationalized + industries_socialized < 50
 on-arrival: capital_flight_timer += 24; industry *= 0.9; coup_progress += 2; unemployed += 5; prov_gov_legitimacy -= 10;
 tags: event
 
@@ -11,6 +11,11 @@ Increasingly, capitalists are moving their assets out of the country. They see t
 
 Factories are shuttering, and industrial production is collapsing.
 
+- @nationalize
+- @takeovers
+- @assuage
+- @nothing
+
 # TODO: how to respond? factory takeovers
 
 @nationalize
@@ -18,7 +23,7 @@ title: The government should seize unoccupied industries.
 subtitle: -1 budget
 unavailable-subtitle: [? if not (player_in_gov) : We must be in the government. ?][? if not ((player_party = "sr" and sr_industrial_policy >= 1) or (player_party = "m" and m_industrial_policy >= 1) or (player_party = "b")) : Our party does not support this radical course. ?]
 choose-if: (player_in_gov) and ((player_party = "sr" and sr_industrial_policy >= 1) or (player_party = "m" and m_industrial_policy >= 1) or (player_party = "b"))
-on-arrival: prov_gov_legitimacy += 5; budget -= 1; industries_nationalized += 20*(prov_gov_efficacy)
+on-arrival: prov_gov_legitimacy += 5; budget -= 1; industries_nationalized += 20*(prov_gov_efficacy); industry *= 1.08; capital_flight_progress -= 5
 
 
 @takeovers
@@ -26,14 +31,58 @@ title: Workers must take over factories and organize production themselves!
 view-if: player_party != "k"
 unavailable-subtitle: [? if not (player_in_gov or player_in_exco) : We must be in the government or the Soviet executive committee. ?][? if not ((player_party = "sr" and sr_industrial_policy >= 1) or (player_party = "m" and m_industrial_policy >= 1) or (player_party = "b")) : Our party does not support this radical course. ?]
 choose-if: (player_in_gov or player_in_exco) and ((player_party = "sr" and sr_industrial_policy >= 1) or (player_party = "m" and m_industrial_policy >= 1) or (player_party = "b"))
-on-arrival: prov_gov_legitimacy += 5
+on-arrival: prov_gov_legitimacy += 5; industry *= 1.06; capital_flight_progress -= 5; industries_socialized += 20*(prov_gov_efficacy)
 
+Workers' councils have taken over the operation of factories abandoned by the capitalists, and are doing their best to keep them in operation. However, they are unable to fully 
 
 
 @assuage
 title: Can we assuage the capitalists somehow?
 unavailable-subtitle: [? if not player_in_gov: We must be in government. ?]
 choose-if: player_in_gov
+
+The capitalists demand the suppression of labor movements and budget austerity.
+
+- @suppress
+- @austerity
+- @both
+- @nationalize
+- @takeovers
+- @nothing
+
+@suppress
+title: Suppress worker unrest with the city militias.
+subtitle: Use the city militias and loyal troops if we must. This will be dangerous.
+unavailable-subtitle: The city militias are not strong enough.
+view-if: ((player_party = "k" and k_in_gov) or (player_party = "m" and m_in_gov) or (player_party = "sr" and sr_in_gov))
+choose-if: loyal_troops_strength + city_militia_strength > workers_militia_strength
+on-arrival: workers_m -= 8 if m_in_gov; workers_sr -= 8 if sr_in_gov; workers_k -= 15; workers_b += 8*(1-b_dissent); labor_unrest -= 10*unrest_modifier; city_militia_independent += 10; city_militia_strength *= 0.8; prov_gov_legitimacy -= 10; industry *= 1.08; capital_flight_progress -= 5; labor_unrest_timer += 4
+
+We have given the order to suppress strikes and factory council organizing with force if necessary. And force was used. This is a dark day in Russian history, another Bloody Sunday, an action that one would think only the Tsars would commit.
+
+Many members of the city militia have chosen to resign rather than commit another action such as this.
+
+
+@austerity
+title: Commit to budget austerity.
+unavailable-subtitle: There is nothing left to cut.
+choose-if: spending > -5
+on-arrival: budget += 2; spending -= 2; middle_none += 5; workers_none += 5; soldiers_none += 5;  workers_m -= 3 if player_party = "m"; workers_sr -= 3 if player_party = "sr"; workers_k -= 3 if player_party = "k"; middle_m -= 3 if player_party = "m"; middle_sr -= 3 if player_party = "sr"; middle_k -= 3 if player_party = "k"; soldiers_m -= 5 if player_party = "m"; soldiers_sr -= 5 if player_party = "sr"; soldiers_k -= 5 if player_party = "k"; train_capacity *= 0.99; morale -= 0.04; benefits -= 1; monthly_inflation -= 0.4; prov_gov_efficacy -= 0.06; labor_unrest += 2; capital_flight_progress -= 5
+
+Cutting the budget hurts the workers and middle class, and also reduces the morales of the soldiers and railroad workers, two of the largest groups of government employees. This makes them less effective at their jobs.
+
+
+@both
+title: Suppress worker unrest and commit to budget austerity.
+subtitle: This will be dangerous.
+unavailable-subtitle: [? if not (loyal_troops_strength + city_militia_strength > workers_militia_strength) : The city militias are not strong enough. ?]
+view-if: ((player_party = "k" and k_in_gov) or (player_party = "m" and m_in_gov) or (player_party = "sr" and sr_in_gov))
+choose-if: loyal_troops_strength + city_militia_strength > workers_militia_strength
+on-arrival: workers_m -= 8 if m_in_gov; workers_sr -= 8 if sr_in_gov; workers_k -= 15; workers_b += 8*(1-b_dissent); labor_unrest -= 10*unrest_modifier; city_militia_independent += 10; city_militia_strength *= 0.8; prov_gov_legitimacy -= 15; industry *= 1.12; capital_flight_progress -= 5; labor_unrest_timer += 4; budget += 2; spending -= 2; middle_none += 5; workers_none += 5; soldiers_none += 5;  workers_m -= 3 if player_party = "m"; workers_sr -= 3 if player_party = "sr"; workers_k -= 3 if player_party = "k"; middle_m -= 3 if player_party = "m"; middle_sr -= 3 if player_party = "sr"; middle_k -= 3 if player_party = "k"; soldiers_m -= 5 if player_party = "m"; soldiers_sr -= 5 if player_party = "sr"; soldiers_k -= 5 if player_party = "k"; train_capacity *= 0.99; morale -= 0.04; benefits -= 1; monthly_inflation -= 0.4; prov_gov_efficacy -= 0.06; labor_unrest += 2; capital_flight_progress -= 5
+
+We have sent in the militias to suppress workers, and cut the government budget. This assuages the capitalists and increases their confidence in our government, but it severely hurts the government's credibility with the masses.
+
+
 
 
 @nothing

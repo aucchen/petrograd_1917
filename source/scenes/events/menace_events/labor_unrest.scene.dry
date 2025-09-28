@@ -27,7 +27,7 @@ subtitle: Use the city militias and loyal troops if we must. This will be danger
 unavailable-subtitle: The city militias are not strong enough.
 view-if: ((player_party = "k" and k_in_gov) or (player_party = "m" and m_in_gov) or (player_party = "sr" and sr_in_gov))
 choose-if: loyal_troops_strength + city_militia_strength > workers_militia_strength
-on-arrival: workers_m -= 8 if m_in_gov; workers_sr -= 8 if sr_in_gov; workers_k -= 15; workers_b += 8*(1-b_dissent); labor_unrest -= 10*unrest_modifier; city_militia_independent += 10; city_militia_strength *= 0.8; prov_gov_legitimacy -= 10; industry *= 1.01; labor_unrest_timer += 4
+on-arrival: workers_m -= 8 if m_in_gov; workers_sr -= 8 if sr_in_gov; workers_k -= 15; workers_b += 8*(1-b_dissent); labor_unrest -= 10*unrest_modifier; city_militia_independent += 10; city_militia_strength *= 0.8; prov_gov_legitimacy -= 10; industry *= 1.02; labor_unrest_timer += 4
 
 We have given the order to suppress the strikes with force if necessary. And force was used. This is a dark day in Russian history, another Bloody Sunday, an action that one would think only the Tsars would commit.
 

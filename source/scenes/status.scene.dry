@@ -339,11 +339,11 @@ Supply quality: [+ supply_quality : efficacy +]
 
 Relations with the West: [+ west_relation : relationships +]
 
-[? if not is_armistice: Armistice negotiations: [+ armistice_progress +] ?]
+[? if not is_armistice and not is_peace: Armistice negotiations: [+ armistice_progress +] ?]
 
 [? if is_armistice: We are currently in an armistice. ?]
 
-[? if is_armistice: Peace negotiations: [+ central_negotiations +]?]
+[? if is_armistice and not is_peace: Peace negotiations: [+ central_negotiations +]?]
 
 
 @security

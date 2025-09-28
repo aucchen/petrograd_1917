@@ -23,7 +23,7 @@ Workers across Petrograd and the cities of Russia are striking and forming ad-ho
 
 @conditions
 title: Support the workers' demands for higher wages and improved working conditions.
-on-arrival: monthly_inflation += 0.2; capital_flight_progress += 1; workers_m += 5*(1-m_dissent) if m_in_exco; workers_sr += 5*(1-sr_dissent) if sr_in_exco; workers_b += 5*(1-b_dissent) if b_in_exco; m_k_relation -= 4 if m_in_exco; sr_k_relation -= 4 if sr_in_exco; prov_gov_soviet_cooperation -= 0.02; income += 1; labor_unrest -= 2;
+on-arrival: monthly_inflation += 0.2; capital_flight_progress += 1; workers_m += 5*(1-m_dissent) if m_in_exco; workers_sr += 5*(1-sr_dissent) if sr_in_exco; workers_b += 5*(1-b_dissent) if b_in_exco; m_k_relation -= 4 if m_in_exco; sr_k_relation -= 4 if sr_in_exco; prov_gov_soviet_cooperation -= 0.02; income += 1; labor_unrest -= 5*unrest_modifier;
 
 We have supported the workers in their economic demands and their struggles with their employers. Strikes are ended with agreements favorable to workers. The employers are somewhat displeased, and higher wages without increased production can lead to more inflation.
 
@@ -32,7 +32,7 @@ We have supported the workers in their economic demands and their struggles with
 title: Support the workers' councils' supervision over management.
 choose-if: (player_party = "m" and m_industrial_policy >= 1) or (player_party = "sr" and sr_industrial_policy >= 1) or (player_party = "b")
 unavailable-subtitle: Our party does not support this.
-on-arrival: workers_councils += 1; monthly_inflation += 0.1; capital_flight_progress += 2; workers_m += 7*(1-m_dissent) if m_in_exco; m_k_relation -= 5 if m_in_exco; workers_sr += 7*(1-sr_dissent) if sr_in_exco; sr_k_relation -= 5 if sr_in_exco; prov_gov_soviet_cooperation -= 0.04; labor_unrest -= 3; industry += 1;
+on-arrival: workers_councils += 1; monthly_inflation += 0.1; capital_flight_progress += 2; workers_m += 7*(1-m_dissent) if m_in_exco; m_k_relation -= 5 if m_in_exco; workers_sr += 7*(1-sr_dissent) if sr_in_exco; sr_k_relation -= 5 if sr_in_exco; prov_gov_soviet_cooperation -= 0.04; labor_unrest -= 10*unrest_modifier; industry += 1;
 
 We support the workers' councils taking supervision over management - the councils must be allowed to read management's documents and have justifications for management decisions. The employers are not pleased with this policy. However, for the most part the councils are genuinely interested in maintaining or expanding production.
 
@@ -40,7 +40,7 @@ We support the workers' councils taking supervision over management - the counci
 title: Support workers' councils seizing control over factories.
 choose-if: (player_party = "m" and m_internationalist_strength > m_defensist_strength and m_industrial_policy >= 2) or (player_party = "sr" and left_sr_strength >= right_sr_strength and sr_industrial_policy >= 2) or (player_party = "b" and b_industrial_policy >= 2)
 unavailable-subtitle: Our party does not support this.
-on-arrival: factory_takeovers += 1; monthly_inflation += 0.2; capital_flight_progress += 6; workers_m += 7*(1-m_dissent) if m_in_exco; m_k_relation -= 8 if m_in_exco; workers_sr += 7*(1-sr_dissent) if sr_in_exco; sr_k_relation -= 8 if sr_in_exco; prov_gov_soviet_cooperation -= 0.15; labor_unrest -= 5; industry *= 0.95;
+on-arrival: factory_takeovers += 1; monthly_inflation += 0.2; capital_flight_progress += 6; workers_m += 7*(1-m_dissent) if m_in_exco; m_k_relation -= 8 if m_in_exco; workers_sr += 7*(1-sr_dissent) if sr_in_exco; sr_k_relation -= 8 if sr_in_exco; prov_gov_soviet_cooperation -= 0.15; labor_unrest -= 20*unrest_modifier; industry *= 0.95;
 
 We have encouraged the workers to take over factories directly, kicking out their capitalist overseers! In the short term, this is bad for industrial production, although hopefully we can reorganize production to rebuild.
 
@@ -54,9 +54,10 @@ We have called the workers to cease striking and go back to work. This hurts our
 
 @efficiency
 title: Use the Soviet's connections to improve production.
-choose-if: soviet_efficacy >= 0.6 and soviet_organization >= 1
+subtitle: -1 resources
+choose-if: soviet_efficacy >= 0.6 and soviet_organization >= 1 and ((player_party = "m" and m_resources > 0) or (player_party = "sr" and sr_resources > 0) or (player_party = "b" and b_resources > 0) or (player_party = "k" and k_resources > 0))
 view-if: workers_councils >= 1 or factory_takeovers >= 1
-unavailable-subtitle: We do not have enough administrative capacity in the Soviet.
-on-arrival: industry *= (1+0.02*soviet_efficacy);
+unavailable-subtitle: [? if soviet_efficacy < 0.6 : We do not have enough administrative capacity in the Soviet. ?][? if not ((player_party = "m" and m_resources > 0) or (player_party = "sr" and sr_resources > 0) or (player_party = "b" and b_resources > 0) or (player_party = "k" and k_resources > 0)) : We do not have enough resources. ?]
+on-arrival: industry *= (1+0.05*soviet_efficacy) if industry <= 100; industry *= (1 + 0.01*soviet_efficacy) if industry > 100; m_resources -= 1 if player_party = "m"; sr_resources -= 1 if player_party = "sr"; b_resources -= 1 if player_party = "b"; k_resources -= 1 if player_party = "k"
 
 We are attempting to use the Soviet's administrative apparatus and the connections forged among the workers' councils to find ways to improve production. It is a difficult task.

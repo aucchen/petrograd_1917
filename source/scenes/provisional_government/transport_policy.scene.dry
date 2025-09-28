@@ -26,12 +26,16 @@ Current allocation:
 
 @allocate_military
 title: Allocate more rail capacity for the military.
+choose-if: civilian_trains > 0
+unavailable-subtitle: We have already allocated all rail capacity for civilian usage.
 on-arrival: military_trains += 5; civilian_trains -= 5
 
 We have allocated more rail capacity for military use.
 
 @allocate_civilian
 title: Allocate more rail capacity for civilian uses.
+choose-if: military_trains > 0
+unavailable-subtitle: We have already allocated all rail capacity for civilian usage.
 on-arrival: military_trains -= 5; civilian_trains += 5
 
 We have allocated more rail capacity for civilian use.
@@ -45,6 +49,6 @@ title: Prioritize civilian rail capacity for industry.
 @rail_labor
 title: Work with the railworkers' union to improve wages and working conditions.
 subtitle: -2 budget
-on-arrival: labor_unrest -= 2; train_capacity *= 1.002; budget -= 2
+on-arrival: labor_unrest -= 5*unrest_modifier; train_capacity *= 1.002; budget -= 2
 
 Improving labor conditions might encourage rail workers to be better at their jobs, increasing rail capacity.

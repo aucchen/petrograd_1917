@@ -21,6 +21,8 @@ Following the revolution, there have been reports of increasing crime and disord
 - @anti_crime
 - @rural_militias
 - @rural_militias_2
+- @rural_suppress
+- @investigate_reactionaries
 - @root: We do not need new policy.
 - @easy_discard
 - @cancel_advisor_action
@@ -64,13 +66,17 @@ We have increased the size and strength of our rural milita.
 
 @rural_suppress
 title: Use the rural militias to suppress peasant unrest in the countryside.
+subtitle: This may upset the left-SRs.
 view-if: rural_militia_strength >= 10
-on-arrival: rural_unrest -= rural_militia_strength*unrest_modifier;
+on-arrival: rural_unrest -= rural_militia_strength*rural_militia_militancy*unrest_modifier; left_sr_dissent += 10 if sr_in_gov and sr_leadership = 0; sr_coalition_dissent += 1 if sr_leadership = 1; left_sr_coalition_dissent += 1; land_seizures_timer += 1; coup_progress -= 1
+
+We have sent the rural militias to suppress peasant land seizures.
+
 
 @target_bolsheviks
 title: Persecute the Bolsheviks, anarchists, and other malcontents.
 unavailable-subtitle: Our city militias are not effective enough.
-view-if: b_threat >= 1 and player_party != "b"
+view-if: b_threat >= 1 and player_party != "b" and not b_in_gov
 choose-if: city_militias >= 1
 on-arrival: workers_b -= 8*prov_gov_efficacy; soldiers_b -= 8*prov_gov_efficacy; b_threat -= 1; m_b_relation -= 15 if m_in_gov; b_sr_relation -= 15 if sr_in_gov; b_k_relation -= 15 if k_in_gov
 
@@ -79,7 +85,18 @@ We have arrested some of the Bolsheviks who organized riots in the city, and for
 
 @anti_crime
 title: Use the militias to combat crime.
-view-if: city_militias >= 1 and crime > 30
+unavailable-subtitle: Our city militias are not effective enough.
+choose-if: city_militias >= 1
+view-if: crime >= 30
 on-arrival: crime -= 6*city_militias*unrest_modifier; prov_gov_legitimacy += city_militias*3
 
-We have deployed the city militias to increase security and combat crime in Petrograd.
+We have deployed the city militias to increase security and combat crime in Petrograd and other major cities.
+
+@investigate_reactionaries
+title: Investigate right-wing and counterrevolutionary movements.
+view-if: player_party != "k"
+unavailable-subtitle: [? if city_militias < 1 : Our city militias are not effective enough. ?]
+choose-if: city_militias >= 1
+on-arrival: coup_progress -= city_militias; capital_flight_progress -= city_militias; k_coalition_dissent += 1; prov_gov_legitimacy += city_militias*2;
+
+Many members of the bourgeois and aristocratic classes are disillusioned with the revolution, and some are even discussing measures to overthrow the revolutionary government and replace it with a dictatorship or restored monarchy. There are rumors of sympathy towards the Germans, and plots to leave Petrograd open to German invasion. Our investigators have identified and thwarted some of this organizing.

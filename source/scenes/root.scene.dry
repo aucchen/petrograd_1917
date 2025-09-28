@@ -938,6 +938,7 @@ Q.timers = [//m_party
             'crime_wave',
             'enemy_reinforcements',
             'german_offensive',
+            'mass_demobilization',
             ];
 Q.advisor_action_timer = 0;
 
