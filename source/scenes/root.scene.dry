@@ -42,9 +42,9 @@ Q.party_name_map = {"m": "Menshevik",
         "sr": "SR",
         "k": "Kadet"};
 
-Q.m_is_player = 1;
+Q.m_is_player = 0;
 Q.sr_is_player = 0;
-Q.b_is_player = 0;
+Q.b_is_player = 1;
 Q.k_is_player = 0;
 
 Q.player_in_exco = 1;
@@ -63,7 +63,7 @@ Q.player3_party = "";
 Q.player4_party = "";
 
 // party resources
-Q.b_resources = 2;
+Q.b_resources = 99992;
 Q.m_resources = 2;
 Q.k_resources = 3;
 Q.sr_resources = 2;
