@@ -44,18 +44,61 @@ if (Q.player_party == 'm') {
     }
 }
 
+// TODO: create a list of governing parties
+Q.governing_parties = [];
+if (Q.k_in_gov) {
+    Q.governing_parties.push("Kadets");
+}
+if (Q.sr_in_gov) {
+    Q.governing_parties.push("SRs");
+}
+if (Q.m_in_gov) {
+    Q.governing_parties.push("Mensheviks");
+}
+if (Q.b_in_gov) {
+    Q.governing_parties.push("Bolsheviks");
+}
+Q.governing_parties_str = Q.governing_parties.join(", ");
+
+Q.exco_parties = [];
+
+if (Q.m_in_exco) {
+    Q.exco_parties.push("Mensheviks");
+}
+if (Q.defensist_in_exco) {
+    Q.exco_parties.push("Menshevik-Defensists");
+}
+if (Q.internationalist_in_exco) {
+    Q.exco_parties.push("Menshevik-Internationalists");
+}
+if (Q.sr_in_exco) {
+    Q.exco_parties.push("SRs");
+}
+if (Q.left_sr_in_exco) {
+    Q.exco_parties.push("Left-SRs");
+}
+if (Q.right_sr_in_exco) {
+    Q.exco_parties.push("Right-SRs");
+}
+if (Q.b_in_exco) {
+    Q.exco_parties.push("Bolsheviks");
+}
+if (Q.k_in_exco) {
+    Q.exco_parties.push("Kadets");
+}
+
+Q.exco_parties_str = Q.exco_parties.join(", ");
+
 Q.monthly_inflation_disp = Q.monthly_inflation.toFixed(1);
 Q.inflation_disp = Q.inflation.toFixed(1);
 Q.unemployed_disp = Q.unemployed.toFixed(1);
 !}
 
-= Status
+= [+ player_party_name +] Status
 
 Week [+ week +], [+ month : month +] [+ year +]
 
-Party: [+ player_party_name +]
-
-[+ player_party_name +] position: [+ position +]
+Position: [+ position +]
 
 Party resources available:
 [? if player_party == "b": [+ b_resources +] ?]
@@ -73,23 +116,66 @@ Internal dissent:
 
 Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])
 
+Parties in government: [+ governing_parties_str +]
+
 Budget: [+ budget +]
 
 [? if not ca_election_held: Constituent Assembly elections: [? if ca_scheduled: Week [+ next_election_week +], [+ next_election_month : month +] [+ next_election_year +] ?] [? if not ca_scheduled: Not scheduled ?] ?]
 
 [? if ca_election_held: Constituent Assembly convocation: Week [+ ca_week +], [+ ca_month : month +] [+ ca_year +] ?]
 
-= Economy and Society
+= Petrograd Soviet
 
-Monthly inflation: [+ monthly_inflation +]% ([+ inflation +]% annually)
+Chair: [+ soviet_chair +] ([+ soviet_chair_party +])
+
+Executive committee: [+ exco_parties_str +]
+
+Overal composition:
+Mensheviks: [+ m_soviet +]%
+Bolsheviks: [+ b_soviet +]%
+SRs: [+ sr_soviet +]%
+Anarchists: [+ anarchist_soviet +]%
+Others: [+ other_soviet +]%
+[? if defensist_split: Menshevik-Defensists: [+ defensist_soviet_votes_dec +]% ?]
+[? if internationalist_split: Menshevik-Internationalists: [+ internationalist_soviet_votes_dec +]% ?]
+[? if right_sr_split: Right-SRs: [+ right_sr_soviet_votes_dec +]% ?]
+[? if left_sr_split: Left-SRs: [+ left_sr_soviet_votes_dec +]% ?]
+
+= Peace
+
+War progress: [+ war_progress : war_score +]
+
+[? if not is_armistice and not is_peace and armistice_progress: Armistice negotiations: [+ armistice_progress +] ?]
+
+[? if is_armistice: We are currently in an armistice. ?]
+
+[? if is_armistice and not is_peace: Peace negotiations: [+ central_negotiations +]?]
+
+War weariness: [+ war_weariness : war_weariness +]
+
+Soldier unrest: [+ soldier_unrest : war_weariness +]
+
+= Land
+
+Land reform policy: [+ land_reform : land_reform +]
+
+Land reform progress: [+ land_reform_progress : land_reform_progress +]
+
+Rural unrest: [+ rural_unrest : war_weariness +]
+
+= Bread
 
 # Real income (% of 1913): [+ income +]%
-
-Unemployment: [+ unemployed +]%
+Monthly inflation: [+ monthly_inflation +]% ([+ inflation +]% annually)
 
 Hunger: [+ hunger : hunger +]
 
-War weariness: [+ war_weariness : war_weariness +]
+Unemployment: [+ unemployed +]%
+
+Labor unrest: [+ labor_unrest : war_weariness +]
+
+
+
 
 
 @politics

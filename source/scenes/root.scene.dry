@@ -915,7 +915,7 @@ Q.timers = [//m_party
             'agricultural_policy', 'food_policy', 'fiscal_policy',
             'foreign_policy', 'judiciary', 'labor_affairs',
             'military_policy', 'education_policy',
-            'internal_security', 'transportation_policy',
+            'internal_security', 'transport_policy',
             'industrial_policy', 'civil_rights',
             'shuffle_cabinet', 'social_policy',
             'education_policy', 'economic_policy', 'coalition_affairs',
