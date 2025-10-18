@@ -913,7 +913,7 @@ Q.timers = [//m_party
             'k_international', 'k_war_policy', 'k_industrial_policy',
             // prov_gov
             'agricultural_policy', 'food_policy', 'fiscal_policy',
-            'foreign_policy', 'judiciary', 'labor_affairs',
+            'foreign_policy', 'judiciary', 'labor_policy',
             'military_policy', 'education_policy',
             'internal_security', 'transport_policy',
             'industrial_policy', 'civil_rights',
