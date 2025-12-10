@@ -92,8 +92,8 @@ on-arrival: bc += 1
 go-to: battle_outcome
 
 [? if workers_militia_b_loyalty >= 50 : The majority of the workers' militias are with the Bolsheviks. ?]
-[? if workers_militia_m_loyalty + workers_militia_sr_loyalty >= workers_militia_b_loyalty : The Mensheviks and SRs have more support among the workers' militias than the Bolsheviks. ?]
-[? if workers_militia_b_loyalty < 50 and  workers_militia_b_loyalty >= workers_militia_m_loyalty + workers_militia_sr_loyalty : At least a plurality of the workers' militia supports the Bolsheviks.. ?]
+[? if workers_militia_m_loyalty + workers_militia_sr_loyalty > workers_militia_b_loyalty : The Mensheviks and SRs combined have more support among the workers' militias than the Bolsheviks. ?]
+[? if workers_militia_b_loyalty < 50 and  workers_militia_b_loyalty >= workers_militia_m_loyalty + workers_militia_sr_loyalty : At least a plurality of the workers' militia supports the Bolsheviks. ?]
 
 @garrison
 title: What about the garrison?
@@ -102,7 +102,7 @@ on-arrival: bc += 1
 go-to: battle_outcome
 
 [? if garrison_b_loyalty >= 50 : The majority of the garrison is with the Bolsheviks. ?]
-[? if garrison_b_loyalty >= garrison_sr_loyalty and garrison_b_loyalty >= garrison_m_loyalty : At least a plurality of the garrison is with the Bolsheviks. ?]
+[? if garrison_b_loyalty >= garrison_sr_loyalty and garrison_b_loyalty >= garrison_m_loyalty and garrison_b_loyalty < 50 : At least a plurality of the garrison is with the Bolsheviks. ?]
 [? if garrison_m_loyalty + garrison_sr_loyalty >= garrison_b_loyalty : The Mensheviks and SRs have more support among the garrison than the Bolsheviks. ?]
 
 @city_militias
@@ -112,6 +112,7 @@ on-arrival: bc += 1
 go-to: battle_outcome
 
 [? if city_militia_k_loyalty + city_militia_m_loyalty + city_militia_sr_loyalty >= 50 : The majority of the city militia supports the Provisional Government.  ?]
+[? if city_militia_k_loyalty + city_militia_m_loyalty + city_militia_sr_loyalty < 50 : The city militia is apathetic in this fight, and will remain neutral.  ?]
 
 @loyal_troops
 title: The loyal troops...

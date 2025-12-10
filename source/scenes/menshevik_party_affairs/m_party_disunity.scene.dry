@@ -34,14 +34,14 @@ Enforcing party discipline reduces dissent, but it leads to demoralization among
 @concessions_internationalists
 title: Give concessions to the Internationalists.
 view-if: internationalist_dissent > 30 and not internationalist_split
-on-arrival: internationalist_dissent -= 6; defensist_dissent += 6; social_patriot_dissent += 6
+on-arrival: internationalist_dissent -= 6; defensist_dissent += 6; social_patriot_dissent += 6; internationalist_strength += m_support_change/2;
 
 We have responded by adopting a more Internationalist posture. The Defensists are somewhat displeased.
 
 @concessions_defensists
 title: Give concessions to the Defensists.
 view-if: defensist_dissent > 30 and not defensist_split
-on-arrival: defensist_dissent -= 6; internationalist_dissent += 6;
+on-arrival: defensist_dissent -= 6; internationalist_dissent += 6; defensist_strength += m_support_change/2;
 
 We have responded by adopting a more Defensist posture. The Internationalists are somewhat displeased.
 

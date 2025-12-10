@@ -191,6 +191,19 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
         Q.month = 1;
         Q.year += 1;
     }
+    // TODO: update records
+    if (Q.time > 0) {
+        var party_support_results = {'date': new Date(Q.year, Q.month - 1, 1+Q.week*7)};
+        for (var party of Q.soviet_parties) {
+            party_support_results[party] = Q[party + '_soviet_normalized']*100;
+        }
+    }
+    Q.soviet_support_records.push(party_support_results);
+    Q.economic_records.push({'date': new Date(Q.year, Q.month - 1, 1+Q.week*7),
+                             'inflation': Q.inflation,
+                             'unemployment': Q.unemployed,
+                             'hunger': Q.hunger});
+
     // Update Soviet representation on every new week
     var petrograd_classes = ["workers", "soldiers"];
 

@@ -19,7 +19,7 @@ In our media and campaign materials, who should we consider our primary enemies?
 
 @counterrevolutionaries
 title: Counterrevolutionary forces, Black Hundreds, [? if kornilov_affair_seen : Kornilovites, ?] and the like.
-on-arrival: workers_sr += 3*(1-sr_dissent); b_sr_relation += 3*(1-sr_dissent); sr_m_relation += 3*(1-sr_dissent); left_sr_dissent -= 2; right_sr_dissent -= 2;
+on-arrival: workers_sr += 3*(1-sr_dissent); b_sr_relation += 3*(1-sr_dissent); m_sr_relation += 3*(1-sr_dissent); left_sr_dissent -= 2; right_sr_dissent -= 2;
 
 Attacking counterrevolutionary forces is popular among all factions of the SRs.
 

@@ -1026,6 +1026,10 @@ Q.sverdlov_advisor = 0; // Yakov Sverdlov - April week 1
 Q.kollontai_advisor = 0; // Alexandra Kollontai - April week 1
 Q.trotsky_advisor = 0;
 
+// Records of stats
+Q.soviet_support_records = [];
+Q.economic_records = [];
+
 !}
 set-bg: img/map_2.jpg
 new-page: true

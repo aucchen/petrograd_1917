@@ -231,6 +231,7 @@ switch (Q.player_party) {
 [? if player_party != "k": Kadets: [+ k_relation : relationships +] ?]
 [? if player_party != "k": </br> Leadership: [+ k_leadership : k_leadership +] ?]
 
+[? if player_party == "k": Conservatives: [+ k_conservative_relation : relationships +] ?]
 
 = Internal factions
 

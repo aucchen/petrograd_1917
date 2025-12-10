@@ -37,7 +37,7 @@ We are building our ties with the Mensheviks. [? if internationalist_strength >=
 
 @con
 title: Improve our relations with the conservative factions to our right.
-on-arrival: k_conservative_relation += (ipr_change-1)*(1-k_dissent); k_conservative_relation -= (ipr_change/2) if left_kadet_strength > right_kadet_strength; k_resources -= 1;
+on-arrival: k_conservative_relation += (ipr_change+5)*(1-k_dissent); k_conservative_relation -= (ipr_change/2) if left_kadet_strength > right_kadet_strength; k_resources -= 1;
 choose-if: k_resources >= 1
 subtitle: -1 resource
 

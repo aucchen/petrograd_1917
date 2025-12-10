@@ -24,7 +24,7 @@ Our policy is to maintain a capitalist ownership and management structure for no
 @supervision
 title: In addition to trade union rights, workers' councils should supervise management.
 subtitle: [? if sr_industrial_policy = 1 : This is our current position. ?]
-on-arrival: right_sr_dissent += 5 if sr_industrial_policy = 0; sr_industrial_policy = 1;
+on-arrival: right_sr_dissent += 5 if sr_industrial_policy = 0; left_sr_strength += 5 if sr_industrial_policy = 0; sr_industrial_policy = 1;
 
 Our policy is that workers' councils should have the right to supervise management decisions.
 

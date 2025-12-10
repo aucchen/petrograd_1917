@@ -38,7 +38,7 @@ We have increased our organizing among the workers. [? if sr_in_gov and prov_gov
 subtitle: -1 resource - the middle class is not part of our base.
 choose-if: sr_resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: sr_resources -= 1; sr_middle_class += 3*(1-sr_dissent); sr_middle_class_org += 1
+on-arrival: sr_resources -= 1; middle_sr += 3*(1-sr_dissent); middle_sr_org += 1
 
 The middle class has never been a subject of our organizing efforts, but that may change.
 
