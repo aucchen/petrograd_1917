@@ -168,6 +168,7 @@ We have added [+ sm +] divisions to the Romanian Front.
 
 @add_caucasus
 title: Add troops to the Caucasus Front.
+subtitle: [? if ottoman_capitulation: The Ottoman Empire has already surrendered, so more troops are unnecessary for now. ?]
 on-arrival: caucasus_front_soldiers += sm; reserve_soldiers -= sm; soldiers_moved += sm
 choose-if: remaining_movement_capacity > 0 and reserve_soldiers > sm
 go-to: reallocate
@@ -281,6 +282,8 @@ Enemy supply quality: [+ southwestern_enemy_supply_quality : efficacy +]
 
 @caucasus_offensive
 title: Caucasus Front
+choose-if: not ottoman_capitulation
+unavailable-subtitle: The Ottomans have already surrendered.
 on-arrival: front = "caucasus"; enemy_front = "caucasus"; attacking = 1;
 
 The Caucasus Front has made advances into Turkish Armenia. However, the terrain here is very difficult for a further offensive.

@@ -1,0 +1,25 @@
+title: Ottoman Capitulation
+subtitle: The Ottoman Empire can no longer continue the war...
+new-page: true
+view-if: caucasus_front_progress > 4 and not is_armistice and not is_peace
+on-arrival: ottoman_capitulation = 1; prov_gov_legitimacy += 20; west_relation += 10; war_weariness -= 15;
+achievement: milyukovs_dream
+max-visits: 1
+tags: event
+
+= Ottoman Capitulation
+
+In the face of our continued advance through Anatolia, the Ottoman Empire's military has collapsed, and the Sultan has no choice but to sue for peace. The Ottoman Empire is now out of the war, and Entente forces are moving to occupy the entirety of its territory.
+
+With the victory in the war, the position of our government has improved both domestically and in relation to the Allies.
+
+- @great_day: Finally, the dream of Constantinople may be achieved...
+- @war_continues: However, the war against the Central Powers continues...
+
+@great_day
+
+Finally, the eternal Russian imperial dream of reaching Constantinople and the Mediterranean may be achieved.
+
+@war_continues
+
+Despite the Ottoman surrender, the Germans and Austrians are still in the war, and are much more formidable enemies.

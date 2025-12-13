@@ -29,7 +29,7 @@ What should our foreign policy priority be?
 
 @improve_west
 title: Improve our relations with our allies in the Entente, France and Britain.
-on-arrival: west_relation += 6*prov_gov_efficacy; west_relation -= 5*prov_gov_efficacy if central_negotiations > 0 or is_armistice
+on-arrival: west_relation += 7*prov_gov_efficacy; west_relation -= 5*prov_gov_efficacy if central_negotiations > 0 or is_armistice
 
 We are working to improve relations with France and Britain. [? if central_negotiations > 0 or is_armistice: Unfortunately, given our seeking of a separate peace, the Allies are much less inclined to treat us favorably. ?]
 
