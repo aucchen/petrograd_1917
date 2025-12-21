@@ -477,7 +477,7 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
         Q.workers_militia_sr_loyalty -= 1;
     }
     // War exhaustion changes - increase by 1 every week
-    if (!Q.is_armistice && !Q.is_peace && Q.month >= 4) {
+    if (!Q.is_armistice && !Q.is_peace && !Q.allied_victory && Q.month >= 4) {
         Q.war_weariness += 1;
         Q.soldier_unrest += 0.2;
     }

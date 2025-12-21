@@ -39,7 +39,7 @@ Q.center_sr_strength = 100*Q.center_sr_strength/total_support;
 Q.right_sr_strength = 100*Q.right_sr_strength/total_support;
 
 // change government minister parties too
-
+/*
 Q.sr_drop_gov = 0;
 if (Q.prime_minister == "Kerensky") {
     Q.prime_minister_party = "Right-SR";
@@ -85,7 +85,7 @@ if (Q.food_minister_party == "Kondratiev") {
 if (Q.sr_in_gov && Q.agriculture_minister != "Chernov") {
     Q.sr_drop_gov = 1;
 }
-
+*/
 
 // change advisors
 if (Q.kerensky_advisor) {

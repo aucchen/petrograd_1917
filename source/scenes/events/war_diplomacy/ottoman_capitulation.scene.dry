@@ -2,7 +2,7 @@ title: Ottoman Capitulation
 subtitle: The Ottoman Empire can no longer continue the war...
 new-page: true
 view-if: caucasus_front_progress > 4 and not is_armistice and not is_peace
-on-arrival: ottoman_capitulation = 1; prov_gov_legitimacy += 20; west_relation += 10; war_weariness -= 15;
+on-arrival: ottoman_capitulation = 1; prov_gov_legitimacy += 20; west_relation += 10; war_weariness -= 15; workers_b -= 8; soldiers_b -= 10; peasants_b -= 5; middle_k += 10*k_dissent; workers_k += 5*k_dissent; soldiers_k += 5; workers_m += 8*m_dissent if m_war_policy <= 1; workers_sr += 8*sr_dissent if sr_war_policy <= 1; right_sr_strength += 10 if not right_sr_split; workers_right_sr += 5 if right_sr_split; soldiers_right_sr += 5 if right_sr_split; defensist_strength += 10 if not defensist_split; workers_defensist += 5 if defensist_split; soldiers_defensist += 5 if defensist_split; prov_gov_efficacy += 0.05
 achievement: milyukovs_dream
 max-visits: 1
 tags: event
@@ -11,7 +11,7 @@ tags: event
 
 In the face of our continued advance through Anatolia, the Ottoman Empire's military has collapsed, and the Sultan has no choice but to sue for peace. The Ottoman Empire is now out of the war, and Entente forces are moving to occupy the entirety of its territory.
 
-With the victory in the war, the position of our government has improved both domestically and in relation to the Allies.
+With the victory in the war, the position of our government has improved both domestically and in relation to the Allies. Support for pro-government and defensist parties has increased, while support for radical anti-war movements such as the Bolsheviks has decreased.
 
 - @great_day: Finally, the dream of Constantinople may be achieved...
 - @war_continues: However, the war against the Central Powers continues...

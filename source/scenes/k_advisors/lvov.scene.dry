@@ -1,0 +1,34 @@
+title: Georgy Lvov
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/k/lvov.jpg
+view-if: lvov_advisor = 1 and player_party = "k"
+new-page: true 
+
+= Georgy Lvov
+
+[? if prime_minister = "Lvov": Georgy Lvov is the current Prime Minister of the Provisional Government. [? if interior_minister = "Lvov": He is also the interior minister. ?] ?]
+[? if prime_minister != "Lvov": Georgy Lvov is the former Prime Minister of the Provisional Government. ?]
+
+- @agriculture_
+- @foreign
+#- @emergency_fundraising
+- @root: Return to main
+
+@agriculture_
+title: Agricultural Policy
+subtitle: Shingarev is the Agriculture Minister.
+choose-if: advisor_action_timer = 0 and agriculture_minister = "Shingarev"
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] weeks before next advisor action. ?] [? if agriculture_minister != "Shingarev" : Shingarev is not the Foreign Minister. ?]
+on-arrival: advisor_action_timer = 4; agricultural_policy_timer -= 4; last_advisor_action = 1 
+go-to: agricultural_policy
+
+
+@foreign
+title: Foreign Affairs
+subtitle: Shingarev is the Foreign Minister.
+choose-if: advisor_action_timer = 0 and foreign_minister = "Shingarev"
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] weeks before next advisor action. ?] [? if foreign_minister != "Shingarev" : Shingarev is not the Foreign Minister. ?]
+on-arrival: advisor_action_timer = 4; foreign_policy_timer -= 4; last_advisor_action = 1 
+go-to: foreign_policy
+

@@ -37,6 +37,7 @@ Q.social_patriot_strength = 100*Q.social_patriot_strength/total_support;
 // change government minister parties too
 
 Q.m_drop_gov = 0;
+/*
 if (Q.prime_minister == "Tsereteli") {
     Q.prime_minister_party = "Menshevik-Defensist";
     Q.m_drop_gov = 1;
@@ -62,9 +63,10 @@ if (Q.labor_minister == "Skobelev") {
     Q.m_drop_gov = 1;
 }
 if (Q.m_in_gov && Q.trade_minister != "Groman" && Q.food_minister != "Groman") {
-    Q.m_in_gov = 0;
-    Q.m_drop_gov = 1;
+    //Q.m_in_gov = 0;
+    //Q.m_drop_gov = 1;
 } 
+*/
 // TODO: figure out the minority soviet stuff - call for new soviet elections?
 
 if (Q.tsereteli_advisor) {

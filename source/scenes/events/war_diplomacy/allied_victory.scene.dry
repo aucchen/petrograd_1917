@@ -1,0 +1,21 @@
+title: Allied Victory!
+subtitle: Finally, the Central Powers are collapsing...
+new-page: true
+view-if: (caucasus_front_progress >= 2) and ((northern_front_progress >= 4) or (western_front_progress >= 4) or (southwestern_front_progress >= 4) or (romanian_front_progress >= 4)) and ((northern_front_progress >= -2) and (western_front_progress >= -3) and (southwestern_front_progress >= -2) and (romanian_front_progress >= -3)) and not is_armistice and not is_peace and ((year = 1917 and month >= 9) or year > 1917)
+on-arrival: ottoman_capitulation = 1; allied_victory = 1; prov_gov_legitimacy += 30; west_relation += 20; war_weariness -= 30; workers_b -= 20; soldiers_b -= 15; peasants_b -= 15; middle_k += 10; workers_k += 5; soldiers_k += 10; workers_m += 10*m_dissent if m_war_policy <= 1; workers_sr += 10*sr_dissent if sr_war_policy <= 1; right_sr_strength += 10 if not right_sr_split; workers_right_sr += 5 if right_sr_split; soldiers_right_sr += 5 if right_sr_split; defensist_strength += 10 if not defensist_split; workers_defensist += 5 if defensist_split; soldiers_defensist += 5 if defensist_split; prov_gov_efficacy += 0.1
+achievement: milyukovs_dream
+max-visits: 1
+tags: event
+
+= Allied Victory
+
+Germany's army is broken in the east and the west. Mutinies have broken out among its sailors and soldiers, and the front is collapsing. Knowing that they cannot continue the war, Germany's general staff have signed an armistice, along with Austria, the Ottoman Empire, and their other co-belligerents.
+
+- @great_day: Finally, the Great War is coming to an end...
+
+@great_day
+achievement: allied_victory
+
+Millions of lives have been lost in the war, on all sides. Will the Allied victory prove their sacrifices worthwhile? The future is unwritten; only time will tell.
+
+Domestically, the victory has boosted the legitimacy of the provisional government, the standing of the pro-war parties (that is, the Kadets), and the strength of defensist factions among the socialists. The allure of the Bolsheviks is greatly lessened among the workers and soldiers. Now, we must demobilize the military and remake Russia for peacetime.

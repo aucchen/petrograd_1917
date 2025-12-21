@@ -193,8 +193,8 @@ We have demobilized [+ sm +] divisions from the reserve.
 
 @prepare
 subtitle: -2 budget, -40 movement capacity
-unavailable-subtitle: [? if remaining_movement_capacity < 40 : We do not have enough movement capacity. ?] [? if offensive_timer > 0 : It is too soon to launch another offensive. ?] [? if is_armistice or is_peace : We have an armistice. ?]
-choose-if: remaining_movement_capacity >= 40 and offensive_timer <= 0 and not is_armistice and not is_peace
+unavailable-subtitle: [? if remaining_movement_capacity < 40 : We do not have enough movement capacity. ?] [? if offensive_timer > 0 : It is too soon to launch another offensive. ?] [? if is_armistice or is_peace : We have an armistice. ?] [? if allied_victory: The war is over, and there is no need for an offensive. ?]
+choose-if: remaining_movement_capacity >= 40 and offensive_timer <= 0 and not is_armistice and not is_peace and not allied_victory
 
 Which front should prepare for an offensive?
 

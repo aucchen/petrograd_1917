@@ -225,6 +225,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_red_october : **Красный Октябрь (Red October)** - as the Bolsheviks, launch the revolution and win. ?]
 
+[? if game_achievement_kamenevs_dream : **Мечта Каменева (Kamenev's Dream)** - as the Bolsheviks, win at least 30% of the vote in the Constituent Assembly election without launching a revolution. ?]
+
 [? if game_achievement_junior_partner : **Младший партнер (Junior Partner)** - join the Bolshevik revolution as a junior partner. ?]
 
 [? if game_achievement_historical_materialism : **Исторический материализм (Historical Materialism)** - reach the end of the game as the Mensheviks. ?]
@@ -240,6 +242,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_peace_2: **Брест-Литовск (Brest-Litovsk)** - sign a permanent peace treaty with the Central Powers. ?] 
 
 [? if game_achievement_victory : **Прорыв (Breakthrough)** - win at least one battle in the Great War. ?]
+
+[? if game_achievement_milyukovs_dream : **Мечта Милюкова (Milyukov's Dream)** - defeat the Ottoman Empire. ?]
 
 [? if game_achievement_womens_battalion : **Женские батальоны смерти (Women's Battalion of Death)** - form the Women's Battalion of Death. ?]
 
@@ -257,6 +261,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_coup_defeated: **Корниловцы разгромлены (Kornilovites defeated)** - attempt to launch a coup and fail. ?]
 
+
 = Completed Achievements Overall
 
 [? if achievement_dustbin : **Свалка истории (The Dustbin of History)** - defeated by the Bolshevik revolution. ?]
@@ -268,6 +273,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_free_russia : **Свободная Россия (A Free Russia)** - reach the end of the game as the Mensheviks, SRs, or Kadets on Hard difficulty. ?]
 
 [? if achievement_red_october : **Красный Октябрь (Red October)** - as the Bolsheviks, launch the revolution and win. ?]
+
+[? if achievement_kamenevs_dream : **Мечта Каменева (Kamenev's Dream)** - as the Bolsheviks, win at least 30% of the vote in the Constituent Assembly election without launching a revolution. ?]
 
 [? if achievement_junior_partner : **Младший партнер (Junior Partner)** - join the Bolshevik revolution as a junior partner. ?]
 
@@ -284,6 +291,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_peace_2: **Брест-Литовск (Brest-Litovsk)** - sign a permanent peace treaty with the Central Powers. ?] 
 
 [? if achievement_victory : **Прорыв (Breakthrough)** - win at least one battle in the Great War. ?]
+
+[? if achievement_milyukovs_dream : **Мечта Милюкова (Milyukov's Dream)** - defeat the Ottoman Empire. ?]
 
 [? if achievement_womens_battalion : **Женские батальоны смерти (Women's Battalion of Death)** - form the Women's Battalion of Death. ?]
 
@@ -313,6 +322,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if not achievement_red_october : **Красный Октябрь (Red October)** - as the Bolsheviks, launch the revolution and win. ?]
 
+[? if not achievement_kamenevs_dream : **Мечта Каменева (Kamenev's Dream)** - as the Bolsheviks, win at least 30% of the vote in the Constituent Assembly election without launching a revolution. ?]
+
 [? if not achievement_junior_partner : **Младший партнер (Junior Partner)** - join the Bolshevik revolution as a junior partner. ?]
 
 [? if not achievement_historical_materialism : **Исторический материализм (Historical Materialism)** - reach the end of the game as the Mensheviks. ?]
@@ -328,6 +339,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_peace_2: **Брест-Литовск (Brest-Litovsk)** - sign a permanent peace treaty with the Central Powers. ?] 
 
 [? if not achievement_victory : **Прорыв (Breakthrough)** - win at least one battle in the Great War. ?]
+
+[? if not achievement_milyukovs_dream : **Мечта Милюкова (Milyukov's Dream)** - defeat the Ottoman Empire. ?]
 
 [? if not achievement_womens_battalion : **Женские батальоны смерти (Women's Battalion of Death)** - form the Women's Battalion of Death. ?]
 
