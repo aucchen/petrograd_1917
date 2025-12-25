@@ -189,9 +189,9 @@ Q.sr_rural_org = 1;
 Q.k_leadership = 0;
 Q.k_factions = ['left_kadet', 'right_kadet'];
 Q.left_kadet_strength = 50;
-Q.left_kadet_dissent = 5;
+Q.left_kadet_dissent = 10;
 Q.right_kadet_strength = 50;
-Q.right_kadet_dissent = 5;
+Q.right_kadet_dissent = 10;
 // 3 = expansionist/annexationist
 Q.k_war_policy = -1;
 Q.k_industrial_policy = -1;
@@ -1009,7 +1009,7 @@ Q.shingarev_advisor = 1; // Andrey Shingarev
 Q.nekrasov_advisor = 1; // Nikolai Nekrasov
 Q.oldenburg_advisor = 0; // Sergey Oldenburg
 // Kadet-aligned liberals
-Q.lvov_advisor = 0; // Prince Georgy Lvov
+Q.lvov_advisor = 1; // Prince Georgy Lvov
 Q.tereshchenko_advisor = 1; // Mikhail Tereshchenko
 // Kadet-aligned conservatives
 Q.rodzianko_advisor = 0; // Mikhail Rodzianko

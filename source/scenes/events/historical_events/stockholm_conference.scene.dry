@@ -1,7 +1,7 @@
 title: Stockholm Peace Conference
 subtitle: The Socialist parties try to find a peace plan...
 new-page: true 
-view-if: month = 9 and week = 1 and (player_party != "k") and not is_armistice and not is_peace
+view-if: month = 9 and week = 1 and (player_party != "k") and not is_armistice and not is_peace and not allied_victory
 max-visits: 1
 tags: event
 

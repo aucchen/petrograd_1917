@@ -102,16 +102,16 @@ Some in the Kadets are ready to be rid of Milyukov, if it would ease the tension
 - @refuse: Do not let the socialists join the government.
 
 @let_join
-on-arrival: right_kadet_dissent += 8; defensist_strength += 5; right_sr_strength += 5; sr_in_gov = 1; m_in_gov = 1; war_minister = "Kerensky"; war_minister_party = "SR"; labor_minister = "Skobelev"; labor_minister_party = "Menshevik"; agriculture_minister = "Chernov"; agriculture_minister_party = "SR"; post_minister = "Tsereteli"; post_minister_party = "Menshevik"; foreign_minister = "Tereshchenko"; finance_minister = "Shingarev"; finance_minister_party = "Kadet";
+on-arrival: right_kadet_dissent += 8; left_kadet_strength += 8; left_kadet_dissent -= 2; defensist_strength += 5; right_sr_strength += 5; sr_in_gov = 1; m_in_gov = 1; war_minister = "Kerensky"; war_minister_party = "SR"; labor_minister = "Skobelev"; labor_minister_party = "Menshevik"; agriculture_minister = "Chernov"; agriculture_minister_party = "SR"; post_minister = "Tsereteli"; post_minister_party = "Menshevik"; foreign_minister = "Tereshchenko"; finance_minister = "Shingarev"; finance_minister_party = "Kadet"; k_conservative_relation -= 10
 
 The Mensheviks and Socialist-Revolutionaries have joined the Provisional Government! For the SRs, Viktor Chernov is Minister of Agriculture and Alexander Kerensky is Minister of War. For the Mensheviks, Irakli Tsereteli is Minister of Posts and Telegraph and Matvey Skobelev is Minister of Labor. Milyukov has resigned, and the position of Foreign Minister is filled by Mikhail Tereshchenko.
 
 @refuse
-on-arrival: left_sr_strength += 15; internationalist_strength += 15; defensis_strength -= 5; labor_unrest += 2; peasant_unrest += 2; prov_gov_legitimacy -= 10; soldiers_b += 5; workers_b += 5;
+on-arrival: left_sr_strength += 20; internationalist_strength += 20; defensist_strength -= 20; right_sr_strength -= 20; labor_unrest += 5; peasant_unrest += 5; prov_gov_legitimacy -= 10; soldiers_b += 5; workers_b += 5; m_k_relation -= 10; sr_k_relation -= 10
 
 We have refused to let the socialists join the government.
 
-Eventually, the protests die down on their own, but the Provisional Government's legitimacy may have been permanently damaged, as has support for the socialists who supported government cooperation.
+Eventually, the protests die down on their own, but the Provisional Government's legitimacy may have been permanently damaged, as has support for the socialists who supported government cooperation. Radicals among the SRs and the social democrats are gaining support.
 
 
 @april_days_b

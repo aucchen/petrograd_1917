@@ -1,7 +1,7 @@
 title: Reichstag Peace Resolution
 subtitle: The majority of the German Reichstag calls for peace...
 new-page: true 
-view-if: month = 7 and week = 1 and not is_armistice
+view-if: month = 7 and week = 1 and not is_armistice and not is_peace and not allied_victory
 max-visits: 1
 tags: event
 

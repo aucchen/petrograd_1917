@@ -1,7 +1,7 @@
 title: Enemy Reinforcements
 subtitle: The Central Powers are strengthening their armies.
 new-page: true
-view-if: enemy_reinforcements_timer = 0 and (northwestern_enemy_soldiers <= 60 or southwestern_enemy_soldiers <= 60 or caucasus_enemy_soldiers < 40) and total_enemy_reinforcements <= 120 and not is_peace and not is_armistice
+view-if: enemy_reinforcements_timer = 0 and (northwestern_enemy_soldiers <= 60 or southwestern_enemy_soldiers <= 60 or (caucasus_enemy_soldiers < 40 and not ottoman_capitulation)) and total_enemy_reinforcements <= 120 and not is_peace and not is_armistice and not allied_victory
 on-arrival: nw_reinf = 1 if northwestern_enemy_soldiers <= 60; total_enemy_reinforcements += 15 if northwestern_enemy_soldiers <= 60; northwestern_enemy_soldiers += 15 if northwestern_enemy_soldiers <= 60; sw_reinf = 1 if southwestern_enemy_soldiers <= 60; total_enemy_reinforcements += 15 if southwestern_enemy_soldiers <= 60; southwestern_enemy_soldiers += 15 if southwestern_enemy_soldiers <= 60; c_reinf = 1 if caucasus_enemy_soldiers < 40; total_enemy_reinforcements += 10 if caucasus_enemy_soldiers < 40; caucasus_enemy_soldiers += 10 if caucasus_enemy_soldiers < 40; enemy_reinforcements_timer += 4
 on-departure: nw_reinf = 0; sw_reinf = 0; c_reinf = 0
 tags: event

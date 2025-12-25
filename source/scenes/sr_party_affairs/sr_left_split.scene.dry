@@ -5,8 +5,9 @@ on-arrival: {!
 Q.left_sr_split = 1;
 Q.sr_leadership = 0;
 Q.parties.push('left_sr');
+Q.soviet_parties.push('left_sr');
 Q.garrison_parties.push('left_sr');
-Q.workers_militia_parties.push('right_sr');
+Q.workers_militia_parties.push('left_sr');
 
 Q.left_sr_strength *= 0.5;
 

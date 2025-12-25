@@ -1,7 +1,7 @@
 title: Nivelle Offensive
 subtitle: French offensive on the Western Front
 new-page: true 
-view-if: month = 4 and week = 3
+view-if: month = 4 and week = 3 and not allied_victory
 max-visits: 1
 tags: event
 

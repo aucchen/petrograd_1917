@@ -1,7 +1,7 @@
 title: Third Battle of Ypres
 subtitle: A British-led offensive in Belgium
 new-page: true 
-view-if: month = 7 and week = 4
+view-if: month = 7 and week = 4 and not allied_victory
 max-visits: 1
 tags: event
 

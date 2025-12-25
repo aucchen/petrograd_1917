@@ -9,14 +9,15 @@ Herein contains relevant information about revolutionary Russia in 1917.
 
 @menu
 
-- @government: Provisional Government
-- @soviet_: Petrograd Soviet
+- @government: The structure of the Provisional Government
+- @timeline: Timeline of recent Russian history
+- @soviet_: Details of the Petrograd Soviet
 - @demographics: Demographics
 - @parties: Parties
 - @economy: Economics
-- @paramilitaries: Paramilitary groups
-- @factions: Internal Factions
-- @timeline: Timeline of recent Russian history
+- @paramilitaries: Defense and military affairs
+- @factions: Internal factions
+- @figures: Figures and charts
 - @backSpecialScene: Exit library.
 
 @government
@@ -72,10 +73,15 @@ Chair: [+ soviet_chair +] ([+ soviet_chair_party +])
 Executive committee: [? if m_in_exco: Mensheviks, ?] [? if sr_in_exco: SRs ?] [? if b_in_exco: Bolsheviks ?]
 
 Overal composition:
+
 Mensheviks: [+ m_soviet +] %
+
 Bolsheviks: [+ b_soviet +] %
+
 SRs: [+ sr_soviet +] %
+
 Anarchists: [+ anarchist_soviet +] %
+
 Others: [+ other_soviet +] %
 
 Soviet efficacy: [+ soviet_efficacy : efficacy +]
@@ -282,17 +288,37 @@ go-to: menu
 
 = Armies and Fronts
 
-Northern Front: [+ northern_front_soldiers +] divisions
+Northern Front: [+ northern_front_soldiers +] divisions - {!</br>!}[+ northern_progress : war_progress +]
 
-Western Front: [+ western_front_soldiers +] divisions
+Western Front: [+ western_front_soldiers +] divisions - 
+{!</br>!}[+ western_progress : war_progress +]
 
-Southwestern Front: [+ southwestern_front_soldiers +] divisions
+Southwestern Front: [+ southwestern_front_soldiers +] divisions - 
+{!</br>!}[+ southwestern_progress : war_progress +]
 
-Romanian Front: [+ romanian_front_soldiers +] divisions
+Romanian Front: [+ romanian_front_soldiers +] divisions - 
+{!</br>!}[+ romanian_progress : war_progress +]
 
-Caucasus Front: [+ caucasus_front_soldiers +] divisions
+Caucasus Front: [+ caucasus_front_soldiers +] divisions - 
+{!</br>!}[+ caucasus_progress : war_progress +]
 
 Garrisons and reserves: [+ reserve_soldiers +] divisions
+
+= Morale and readiness
+
+Morale: [+ morale : efficacy +]
+
+Discipline: [+ discipline : efficacy +]
+
+Supply quality: [+ supply_quality : efficacy +]
+
+= Enemy forces
+
+Northwestern Front: [+ northwestern_enemy_soldiers +] divisions
+
+Southwestern Front: [+ southwestern_enemy_soldiers +] divisions
+
+Caucasus Front: [+ caucasus_enemy_soldiers +] divisions
 
 = Forces in Petrograd
 
@@ -457,4 +483,174 @@ Strength: [+ left_sr_strength : strength_2 +]
 
 Dissent: [+ left_sr_dissent : dissent +]
 
+
+@figures
+go-to: menu
+on-display: {!
+// Soviet graph
+// do the graphs
+var data = [
+{"id": "anarchist",
+ "legend": "Anarchist",
+ "name": "Anarchist",
+ "seats": Math.round(Q.anarchist_soviet*10)},
+{"id": "b",
+ "legend": "Bolshevik",
+ "name": "Bolshevik",
+ "seats": Math.round(Q.b_soviet*10)},
+];
+if (Q.internationalist_soviet_votes_dec) {
+    data.push({
+            "id": "internationalist",
+            "legend": "Menshevik-Internationalist",
+            "name": "Menshevik-Internationalist",
+            "seats": Math.round(Q.internationalist_soviet_votes_dec*10)
+            });
+}
+data.push({
+    "id": "m",
+    "legend": "Menshevik",
+    "name": "Menshevik",
+    "seats": Math.round(Q.m_soviet*10)
+});
+if (Q.defensist_soviet_votes_dec) {
+    data.push({
+            "id": "defensist",
+            "legend": "Menshevik-Defensist",
+            "name": "Menshevik-Defensist",
+            "seats": Math.round(Q.defensist_soviet_votes_dec*10)
+            });
+}
+if (Q.left_sr_soviet_votes_dec) {
+    data.push({
+            "id": "left_sr",
+            "legend": "Left-SR",
+            "name": "Left-SR",
+            "seats": Math.round(Q.left_sr_soviet_votes_dec*10)
+            });
+}
+data.push({
+    "id": "sr",
+    "legend": "SR",
+    "name": "SR",
+    "seats": Math.round(Q.sr_soviet*10)
+});
+if (Q.right_sr_soviet_votes_dec) {
+    data.push({
+            "id": "right_sr",
+            "legend": "Right-SR",
+            "name": "Right-SR",
+            "seats": Math.round(Q.right_sr_soviet_votes_dec*10)
+            });
+}
+data.push({
+    "id": "other",
+    "legend": "Others",
+    "name": "Others",
+    "seats": Math.round(Q.other_soviet*10)
+});
+if (window && d3) {
+    var width = 500;
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50;
+        height = width;
+        document.getElementById("soviet").style.height = screenWidth/2 + "px";
+    }
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#soviet").datum(data).call(parliament);
+
+    // Soviet party support records
+    if (Q.time > 2) {
+        for (var k of Q.soviet_support_records) {
+            for (var p of Q.soviet_parties) {
+                if (!k[p]) {
+                    k[p] = 0;
+                }
+            }
+        }
+        var party_colors = {'anarchist': '#000000',
+        'b': '#8B0000', 'm': '#E3000F', 'sr': '#c700a2',
+        'other': '#919191'};
+        var party_names = {'anarchist': 'Anarchists', 'b': 'Bolsheviks',
+        'm': 'Mensheviks', 'sr': 'SRs',
+        'other': 'Others'};
+        if (Q.soviet_parties.indexOf('internationalist') >= 0) {
+            party_colors['internationalist'] = '#ff3c00';
+            party_names['internationalist'] = 'Menshevik-Internationalists';
+        }
+        if (Q.soviet_parties.indexOf('defensist') >= 0) {
+            party_colors['defensist'] = '#fc7a82';
+            party_names['defensist'] = 'Menshevik-Defensists';
+        }
+        if (Q.soviet_parties.indexOf('left_sr') >= 0) {
+            party_colors['left_sr'] = '#ff006a';
+            party_names['left_sr'] = 'Left-SRs';
+        }
+        if (Q.soviet_parties.indexOf('right_sr') >= 0) {
+            party_colors['right_sr'] = '#c268ff';
+            party_names['right_sr'] = 'Right-SRs';
+        }
+        var lines_2 = d3.linegraph(true, true,
+            Q.soviet_parties,
+            party_colors,
+            party_names, null, 0, 2, 1917, 2);
+        lines_2.width(width).height(400);
+        d3.select("#soviet_support_history").datum(Q.soviet_support_records).call(lines_2);
+    }
+
+
+    // economic stats
+    var minInflation = d3.min(Q.economic_records, d => d.inflation);
+    var maxInflation = d3.max(Q.economic_records, d => d.inflation);
+    var maxProduction = d3.max(Q.economic_records, d => d.industry);
+    var lines_3 = d3.linegraph(true, true, ['inflation', 'hunger', 'industry', 'unemployment'],
+            {'inflation': '#0000FF', 'hunger': '#FF00FF', 'industry': '#00FF00', 'unemployment': '#FF0000'},
+            {'inflation': 'Inflation', 'hunger': 'Hunger', 'industry': 'Production', 'unemployment': 'Unemployment'},
+            maxInflation + 5, 0, 2, 1917, 2);
+    lines_3.width(width).height(300);
+    d3.select("#economic_history").datum(Q.economic_records).call(lines_3);
+
+}
+!}
+
+= Petrograd Soviet
+
+{!<svg id="soviet" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<table>!}
+{!<tr><td>Party</td><td>Vote share</td></tr>!}
+
+{!<tr><td><div class="box b"> </div> !} Bolsheviks: {!</td><td>!} [+ b_soviet +]% {!</td>!}
+
+[? if internationalist_soviet_votes_dec : {!<tr><td><div class="box internationalist"></div> Menshevik-Internationalists: </td><td>!} [+ internationalist_soviet_votes_dec +]% {!</td>!} ?]
+
+{!<tr><td><div class="box m"> </div> !} Mensheviks: {!</td><td>!} [+ m_soviet +]% {!</td>!}
+
+[? if defensist_soviet_votes_dec : {!<tr><td><div class="box defensist"></div> Menshevik-Defensists: </td><td>!} [+ defensist_soviet_votes_dec +]% {!</td>!} ?]
+
+[? if left_sr_soviet_votes_dec : {!<tr><td><div class="box left_sr"></div> !}Left-SRs: {!</td><td>!} [+ left_sr_soviet_votes_dec +]% {!</td>!} ?]
+
+{!<tr><td><div class="box sr"> </div> !} SRs: {!</td><td>!} [+ sr_soviet +]% {!</td>!}
+
+[? if right_sr_soviet_votes_dec : {!<tr><td><div class="box right_sr"></div> !}Right-SRs: {!</td><td>!} [+ right_sr_soviet_votes_dec +]% {!</td>!} ?]
+
+{!<tr><td><div class="box a"> </div> !} Anarchists: {!</td><td>!} [+ anarchist_soviet +]% {!</td>!}
+
+{!<tr><td><div class="box other"> </div> !} Others: {!</td><td>!} [+ other_soviet +]% {!</td>!}
+{!</table>!}
+
+
+= Soviet support history
+
+{!<svg id="soviet_support_history" style="width: 500px; height: 400px;"> </svg>!}
+
+
+= Economic history
+
+{!<svg id="economic_history" style="width: 500px; height: 300px;"> </svg>!}
 

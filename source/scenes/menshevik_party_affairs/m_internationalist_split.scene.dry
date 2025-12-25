@@ -5,7 +5,9 @@ on-arrival: {!
 Q.internationalist_split = 1;
 Q.m_leadership = 0;
 Q.parties.push('internationalist');
+Q.soviet_parties.push('internationalist');
 Q.garrison_parties.push('internationalist');
+Q.workers_milita_parties.push('internationalist');
 
 Q.m_b_relation -= 8;
 

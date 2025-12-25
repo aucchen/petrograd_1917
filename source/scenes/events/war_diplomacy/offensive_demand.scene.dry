@@ -1,8 +1,8 @@
 title: Allied Demands
 subtitle: The Allies demand a military offensive...
 new-page: true
-view-if: month = 6 and ((player_party = "m" and war_minister_party = "Menshevik") or (player_party = "k" and war_minister = "Guchkov") or (player_party = "sr" and war_minister_party = "SR")) and battle_count = 0 and not battle_rejected and offensive_demand_timer = 0
-on-arrival: offensive_demand_timer = 1
+view-if: month >= 6 and ((player_party = "m" and war_minister_party = "Menshevik") or (player_party = "k" and war_minister = "Guchkov") or (player_party = "sr" and war_minister_party = "SR")) and battle_count = 0 and not battle_rejected and offensive_demand_timer = 0
+on-arrival: offensive_demand_timer = 2
 tags: event
 
 = Allied Demands
@@ -11,10 +11,18 @@ Our allies are demanding that we fulfil our obligations to the Entente by launch
 
 - @reject
 - @military_policy.prepare: Prepare for an offensive, then.
-- @root: Perhaps at a later time.
+- @later: Perhaps at a later time.
 
 @reject
 title: Reject the demands - we will not attack.
 on-arrival: battle_rejected = 1; west_relation *= 0.5; usa_relation *= 0.5; m_k_relation -= 10 if player_party = "m"; sr_k_relation -= 10 if player_party = "sr";
 
 We have rejected the Allied demands for a continued offensive. They are highly displeased, and it is likely that we will not be receiving any more economic assistance.
+
+
+@later
+choose-if: delay_offensive_count = 0
+on-arrival: delay_offensive_count += 1
+unavailable-subtitle: We have done enough delaying; the Allies are not accepting our excuses.
+
+We tell the Allies that we will launch an offensive when we are better prepared. They are understanding, for now, but they are still demanding an offensive.

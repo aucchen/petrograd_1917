@@ -18,7 +18,7 @@ Andrei Shingarev is a long-time Kadet member of the Duma.
 title: Agricultural Policy
 subtitle: Shingarev is the Agriculture Minister.
 choose-if: advisor_action_timer = 0 and agriculture_minister = "Shingarev"
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] weeks before next advisor action. ?] [? if agriculture_minister != "Shingarev" : Shingarev is not the Foreign Minister. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] weeks before next advisor action. ?] [? if agriculture_minister != "Shingarev" : Shingarev is not the Agriculture Minister. ?]
 on-arrival: advisor_action_timer = 4; agricultural_policy_timer -= 4; last_advisor_action = 1 
 go-to: agricultural_policy
 

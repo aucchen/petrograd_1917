@@ -35,7 +35,7 @@ Indirect taxes: [+ indirect_taxes : taxation +]
 subtitle: +1 budget
 unavailable-subtitle: Taxes are already too high.
 choose-if: income_taxes < 5
-on-arrival: budget += 1; middle_none += 5; capital_flight_progress += 1; capital_flight_progress += 1 if income_taxes >= 2; workers_m -= 3 if player_party = "m"; workers_sr -= 3 if player_party = "sr"; workers_k -= 3 if player_party = "k"; middle_m -= 5 if player_party = "m"; middle_sr -= 5 if player_party = "sr"; middle_k -= 5 if player_party = "k" and income_taxes >= 2; income_taxes += 1; monthly_inflation -= 0.2;
+on-arrival: budget += 1; middle_none += 5; capital_flight_progress += 1; capital_flight_progress += 1 if income_taxes >= 2; workers_m -= 3 if player_party = "m"; workers_sr -= 3 if player_party = "sr"; workers_k -= 3 if player_party = "k"; middle_m -= 5 if player_party = "m"; middle_sr -= 5 if player_party = "sr"; middle_k -= 5 if player_party = "k" and income_taxes >= 2; income_taxes += 1; monthly_inflation -= 0.2; k_coalition_dissent += 1 if player_party != "k" and income_taxes >= 2
 
 Russia has historically had a weak tax base, relying primarily on indirect taxes. Only the middle class and some of the better-paid workers, less than a quarter of the working population, pay income taxes.
 
@@ -68,6 +68,7 @@ We have raised indirect taxes - fees for government services, taxes on internal 
 
 @cut_indirect_taxes
 view-if: budget >= 1
+on-arrival: budget -= 1;  workers_m += 5*(1-m_dissent) if player_party = "m"; workers_sr += 5*(1-sr_dissent) if player_party = "sr"; workers_k += 6*(1-k_dissent) if player_party = "k"; indirect_taxes -= 1; monthly_inflation += 0.2;
 
 @loans
 subtitle: +2 budget
@@ -84,13 +85,17 @@ unavailable-subtitle: Our relation with the West is not good enough.
 choose-if: west_relation >= 60
 on-arrival: west_relation -= 10; west_loans += 2; foreign_debt += 2; budget += 2
 
-We have taken out a new set of foreign loans.
+We have taken out a new set of foreign loans. This raises strains on our relationship with the Allies.
+
+@pay_back_loans
+title: Pay down our debt.
+subtitle: -2 budget
 
 @discipline
 subtitle: +2 budget - cut government salaries and benefits.
 unavailable-subtitle: There is nothing left to cut.
 choose-if: spending > -5
-on-arrival: budget += 2; spending -= 2; middle_none += 5; workers_none += 5; soldiers_none += 5;  workers_m -= 3 if player_party = "m"; workers_sr -= 3 if player_party = "sr"; workers_k -= 3 if player_party = "k"; middle_m -= 3 if player_party = "m"; middle_sr -= 3 if player_party = "sr"; middle_k -= 3 if player_party = "k"; soldiers_m -= 5 if player_party = "m"; soldiers_sr -= 5 if player_party = "sr"; soldiers_k -= 5 if player_party = "k"; train_capacity *= 0.99; morale -= 0.04; benefits -= 1; monthly_inflation -= 0.4; prov_gov_efficacy -= 0.06; labor_unrest += 2; capital_flight_progress -= 2
+on-arrival: budget += 2; spending -= 2; middle_none += 5; workers_none += 5; soldiers_none += 5;  workers_m -= 3 if player_party = "m"; workers_sr -= 3 if player_party = "sr"; workers_k -= 3 if player_party = "k"; middle_m -= 3 if player_party = "m"; middle_sr -= 3 if player_party = "sr"; middle_k -= 3 if player_party = "k"; soldiers_m -= 5 if player_party = "m"; soldiers_sr -= 5 if player_party = "sr"; soldiers_k -= 5 if player_party = "k"; train_capacity *= 0.99; morale -= 0.04; benefits -= 1; monthly_inflation -= 0.4; prov_gov_efficacy -= 0.06; labor_unrest += 2; capital_flight_progress -= 2; socialist_coalition_dissent += 1 if player_party = "k"
 
 Cutting the budget hurts the workers and middle class, and also reduces the morales of the soldiers and railroad workers, two of the largest groups of government employees. This makes them less effective at their jobs.
 

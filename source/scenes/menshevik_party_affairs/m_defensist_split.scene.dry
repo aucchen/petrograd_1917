@@ -7,7 +7,9 @@ Q.defensist_split = 1;
 Q.m_leadership = 1;
 Q.m_war_policy = 2;
 Q.parties.push('defensist');
+Q.soviet_parties.push('defensist');
 Q.garrison_parties.push('defensist');
+Q.workers_militia_parties.push('defensist');
 
 Q.m_k_relation -= 8;
 

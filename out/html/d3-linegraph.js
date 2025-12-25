@@ -13,7 +13,7 @@ function addMonths(date, months) {
 }
 
 
-d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataMax, dataMin, additionalMonths) {
+d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataMax, dataMin, additionalMonths, startYear, startMonth) {
     /* params */
     if (!parties) {
         parties = ['spd', 'kpd', 'ddp', 'z', 'dvp', 'dnvp', 'nsdap', 'other'];
@@ -26,6 +26,12 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
     }
     if (!additionalMonths) {
         additionalMonths = 10;
+    }
+    if (!startYear) {
+        startYear = 1928;
+    }
+    if (!startMonth) {
+        startMonth = 0;
     }
 
     // Declare the chart dimensions and margins.
@@ -44,25 +50,22 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
 
       // Declare the x (horizontal position) scale.
       const maxDate = d3.max(dates);
-      const xScale = d3.scaleUtc([new Date(1928, 0), addMonths(maxDate, additionalMonths)], [marginLeft, width - marginRight]);
+      const xScale = d3.scaleUtc([new Date(startYear, startMonth), addMonths(maxDate, additionalMonths)], [marginLeft, width - marginRight]);
 
       var xaxis = d3.axisBottom()
-        .tickFormat(d3.timeFormat('%b %Y'))
+        .tickFormat(d3.timeFormat('%b %d %Y'))
         .tickValues(dates)
         .scale(xScale);
       if (noTicks) {
         xaxis = d3.axisBottom()
-        .tickFormat(d3.timeFormat('%b %Y'))
+        .tickFormat(d3.timeFormat('%b %d %Y'))
         .ticks(10)
         .scale(xScale);
       }
 
       // Declare the y (vertical position) scale.
       if (!dataMax) {
-          const maxSPD = d3.max(data, d => d.spd);
-          const maxNSDAP = d3.max(data, d => d.nsdap);
-          dataMax = maxSPD >= maxNSDAP ? maxSPD + 10 : maxNSDAP + 10;
-          dataMin = 0;
+          dataMax = 100;
       }
       const yScale = d3.scaleLinear([dataMin, dataMax], [height - marginBottom, marginTop]);
 

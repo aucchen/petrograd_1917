@@ -141,6 +141,7 @@ Q.soldiers_population = 145000000*(Q.soldiers)/100;
 Q.food_demand_urban = Q.urban_population*500/1000000;// in million kg/year
 Q.food_demand_rural = Q.rural_population*500/1000000; // million kg/year - minimal demand; lower than this would provoke famine/violence
 Q.food_demand_military = Q.soldiers_population*700/1000000; // million kg/year
+Q.food_requisitioned = 1.2*Q.food_demand_military/Q.food_production;
 
 // hunger
 Q.food_supply_urban = Q.food_production*Q.food_sold;
@@ -191,17 +192,18 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
         Q.month = 1;
         Q.year += 1;
     }
-    // TODO: update records
+    // update records
     if (Q.time > 0) {
         var party_support_results = {'date': new Date(Q.year, Q.month - 1, 1+Q.week*7)};
         for (var party of Q.soviet_parties) {
-            party_support_results[party] = Q[party + '_soviet_normalized']*100;
+            party_support_results[party] = Q[party + '_soviet'];
         }
     }
     Q.soviet_support_records.push(party_support_results);
     Q.economic_records.push({'date': new Date(Q.year, Q.month - 1, 1+Q.week*7),
                              'inflation': Q.inflation,
                              'unemployment': Q.unemployed,
+                             'industry': Q.industry,
                              'hunger': Q.hunger});
 
     // Update Soviet representation on every new week
@@ -257,6 +259,18 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
     Q.b_soviet = Q.b_soviet_votes_dec;
     Q.anarchist_soviet = Q.anarchist_soviet_votes_dec;
     Q.other_soviet = Math.round(10*(Q.popular_socialist_soviet_votes_dec + Q.other_soviet_votes_dec + Q.k_soviet_votes_dec + Q.conservative_soviet_votes_dec))/10;
+    if (Q.internationalist_split) {
+        Q.internationalist_soviet = Q.internationalist_soviet_votes_dec;
+    }
+    if (Q.defensist_split) {
+        Q.defensist_soviet = Q.defensist_soviet_votes_dec;
+    }
+    if (Q.left_sr_split) {
+        Q.left_sr_soviet = Q.left_sr_soviet_votes_dec;
+    }
+    if (Q.right_sr_split) {
+        Q.right_sr_soviet = Q.right_sr_soviet_votes_dec;
+    }
 
     // decrement timers
     for (var timer of Q.timers) {
@@ -283,8 +297,14 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
     // agricultural industry effects on food acquisition
     if (Q.agricultural_industry_production >= 5) {
         Q.food_production *= 1.001;
+        if (Q.food_production < 140000) {
+            Q.food_production *= 1.005;
+        }
         if (Q.agricultural_industry_production >= 10) {
-            Q.food_production *= 1.003;
+            Q.food_production *= 1.002;
+            if (Q.food_production < 155000) {
+                Q.food_production *= 1.005;
+            }
         }
         if (Q.food_sold < 0.07 + (Q.agricultural_industry_production - 3)/100 && Q.rural_hunger <= 0) {
             Q.food_sold += 0.002;
@@ -300,6 +320,12 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
     }
 
     // civilian production effects on inflation and food_sold /////////
+    if (Q.civilian_production >= 90) {
+        if (Q.monthly_inflation >= 0.5) Q.monthly_inflation -= 0.1;
+        if (Q.rural_hunger <= 0 && Q.food_sold <= 0.22) {
+            Q.food_sold += 0.002;
+        }
+    }
     if (Q.civilian_production >= 80) {
         if (Q.monthly_inflation >= 1) Q.monthly_inflation -= 0.1;
         if (Q.rural_hunger <= 0 && Q.food_sold <= 0.2) {
@@ -313,7 +339,7 @@ if (Q.week_actions >= 1 && Q.current_player >= Q.n_players) {
         }
     }
     if (Q.civilian_production >= 60) {
-        if (Q.monthly_inflation >= 3.5) Q.monthly_inflation -= 0.1;
+        if (Q.monthly_inflation >= 3) Q.monthly_inflation -= 0.1;
         if (Q.rural_hunger <= 0 && Q.food_sold <= 0.1) {
             Q.food_sold += 0.001;
         }
