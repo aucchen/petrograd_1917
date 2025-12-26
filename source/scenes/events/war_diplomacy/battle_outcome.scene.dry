@@ -14,7 +14,7 @@ on-arrival: in_offensive_battle = 0;
 # TODO: add some battle stats here - print the soldiers, morale, etc.
 
 @defeat_2
-on-arrival: defensist_strength -= 6; social_patriot_strength -= 10; right_sr_strength -= 6; soldiers_sr -= 8 if sr_in_gov; soldiers_sr -= 6 if sr_war_policy <= 1; soldiers_m -= 9 if m_in_gov; soldiers_m -= 6 if m_war_position <= 1; soldiers_k -= 15; morale *= 0.8; discipline *= 0.7; train_capacity *= 0.999; soldiers_b += 15 if not b_in_gov; military_progress -= 2; coup_progress += 2
+on-arrival: defensist_strength -= 6; social_patriot_strength -= 10; right_sr_strength -= 6; soldiers_sr -= 8 if sr_in_gov; soldiers_sr -= 6 if sr_war_policy <= 1; soldiers_m -= 9 if m_in_gov; soldiers_m -= 6 if m_war_position <= 1; soldiers_k -= 15; morale *= 0.8; discipline *= 0.7; train_capacity *= 0.999; soldiers_b += 15 if not b_in_gov; military_progress -= 2; coup_progress += 2; soldier_unrest += 5
 
 = Total Defeat
 
@@ -27,7 +27,7 @@ Our forces have been totally defeated by the Central Powers armies, and are retr
 The defeat has made the people ever more tired of war.
 
 @defeat_1
-on-arrival: defensist_strength -= 6; social_patriot_strength -= 10; right_sr_strength -= 6; soldiers_sr -= 7 if sr_in_gov; soldiers_sr -= 3 if sr_war_policy <= 1; soldiers_m -= 7 if m_in_gov; soldiers_m -= 4 if m_war_policy <= 1; soldiers_k -= 10; morale *= 0.9; discipline *= 0.7; train_capacity *= 0.9999; soldiers_b += 10 if not b_in_gov; military_progress -= 1; coup_progress += 1 
+on-arrival: defensist_strength -= 6; social_patriot_strength -= 10; right_sr_strength -= 6; soldiers_sr -= 7 if sr_in_gov; soldiers_sr -= 3 if sr_war_policy <= 1; soldiers_m -= 7 if m_in_gov; soldiers_m -= 4 if m_war_policy <= 1; soldiers_k -= 10; morale *= 0.9; discipline *= 0.7; train_capacity *= 0.9999; soldiers_b += 10 if not b_in_gov; military_progress -= 1; coup_progress += 1; soldier_unrest += 3
 
 = Defeat
 
@@ -40,7 +40,7 @@ The Central Powers have inflicted a defeat upon us. Our forces have retreated to
 The defeat has made the people ever more tired of war.
 
 @victory_1
-on-arrival: defensist_strength += 10; social_patriot_strength += 10; right_sr_strength += 10; morale *= 1.05; discipline *= 0.9; defense_bonus = 0; train_capacity *= 0.9999; military_progress += 1; 
+on-arrival: defensist_strength += 10; social_patriot_strength += 10; right_sr_strength += 10; morale *= 1.05; discipline *= 0.9; defense_bonus = 0; train_capacity *= 0.9999; military_progress += 1; soldier_unrest -= 5
 achievement: victory
 
 = Victory
@@ -52,7 +52,7 @@ Enemy casualties: [+ hostile_casualties +]0,000 troops
 We have achieved a victory over the enemy! We have gained some territory.
 
 @victory_2
-on-arrival: defensist_strength += 10; social_patriot_strength += 10; right_sr_strength += 10; morale *= 1.05; discipline *= 0.9; defense_bonus = 0; train_capacity *= 0.9999; military_progress += 2;
+on-arrival: defensist_strength += 10; social_patriot_strength += 10; right_sr_strength += 10; morale *= 1.05; discipline *= 0.9; defense_bonus = 0; train_capacity *= 0.9999; military_progress += 2; soldier_unrest -= 8
 achievement: victory
 
 = Total Victory

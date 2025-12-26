@@ -2,7 +2,7 @@ title: Ottoman Capitulation
 subtitle: The Ottoman Empire can no longer continue the war...
 new-page: true
 view-if: caucasus_progress > 4 and not is_armistice and not is_peace
-on-arrival: ottoman_capitulation = 1; prov_gov_legitimacy += 20; west_relation += 10; war_weariness -= 15; workers_b -= 8; soldiers_b -= 10; peasants_b -= 5; middle_k += 10*(1-k_dissent); workers_k += 5*(1-k_dissent); soldiers_k += 5; workers_m += 8*(1-m_dissent) if m_war_policy <= 1; workers_sr += 8*(1-sr_dissent) if sr_war_policy <= 1; right_sr_strength += 10 if not right_sr_split; workers_right_sr += 5 if right_sr_split; soldiers_right_sr += 5 if right_sr_split; defensist_strength += 10 if not defensist_split; workers_defensist += 5 if defensist_split; soldiers_defensist += 5 if defensist_split; prov_gov_efficacy += 0.05
+on-arrival: ottoman_capitulation = 1; prov_gov_legitimacy += 20; west_relation += 10; war_weariness -= 15; workers_b -= 8; soldiers_b -= 10; peasants_b -= 5; middle_k += 10*(1-k_dissent); workers_k += 5*(1-k_dissent); soldiers_k += 5; workers_m += 8*(1-m_dissent) if m_war_policy <= 1; workers_sr += 8*(1-sr_dissent) if sr_war_policy <= 1; right_sr_strength += 10 if not right_sr_split; workers_right_sr += 5 if right_sr_split; soldiers_right_sr += 5 if right_sr_split; defensist_strength += 10 if not defensist_split; workers_defensist += 5 if defensist_split; soldiers_defensist += 5 if defensist_split; prov_gov_efficacy += 0.05; soldier_unrest -= 10
 achievement: milyukovs_dream
 max-visits: 1
 tags: event

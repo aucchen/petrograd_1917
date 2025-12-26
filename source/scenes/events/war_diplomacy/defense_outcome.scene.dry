@@ -11,7 +11,7 @@ go-to: defeat_2 if battle_outcome = -2; defeat_1 if battle_outcome = -1; victory
 on-arrival: in_defensive_battle = 0;
 
 @defeat_2
-on-arrival: defensist_strength -= 6; social_patriot_strength -= 10; right_sr_strength -= 6; soldiers_sr -= 15 if sr_in_gov; soldiers_m -= 15 if m_in_gov; soldiers_k -= 15; morale *= 0.8; discipline *= 0.7; train_capacity *= 0.999; soldiers_b += 15 if not b_in_gov; military_progress -= 2; coup_progress += 2; german_offensive_timer = 8 if not refuse_treaty else german_offensive_timer = 1
+on-arrival: defensist_strength -= 6; social_patriot_strength -= 10; right_sr_strength -= 6; soldiers_sr -= 15 if sr_in_gov; soldiers_m -= 15 if m_in_gov; soldiers_k -= 15; morale *= 0.8; discipline *= 0.7; train_capacity *= 0.999; soldiers_b += 15 if not b_in_gov; military_progress -= 2; coup_progress += 2; german_offensive_timer = 8 if not refuse_treaty else german_offensive_timer = 1; soldier_unrest += 5
 go-to: defeat_desc
 
 = Total Defeat
@@ -23,7 +23,7 @@ Enemy casualties: [+ hostile_casualties +]0,000 troops
 Our forces have been totally defeated by the Central Powers armies, and are retreating. The people are growing ever more tired of war.
 
 @defeat_1
-on-arrival: defensist_strength -= 6; social_patriot_strength -= 10; right_sr_strength -= 6; soldiers_sr -= 8 if sr_in_gov; soldiers_m -= 8 if m_in_gov; soldiers_k -= 10; morale *= 0.9; discipline *= 0.7; train_capacity *= 0.9999; soldiers_b += 10 if not b_in_gov; military_progress -= 1; coup_progress += 1; german_offensive_timer = 8 if not refuse_treaty else german_offensive_timer = 1
+on-arrival: defensist_strength -= 6; social_patriot_strength -= 10; right_sr_strength -= 6; soldiers_sr -= 8 if sr_in_gov; soldiers_m -= 8 if m_in_gov; soldiers_k -= 10; morale *= 0.9; discipline *= 0.7; train_capacity *= 0.9999; soldiers_b += 10 if not b_in_gov; military_progress -= 1; coup_progress += 1; german_offensive_timer = 8 if not refuse_treaty else german_offensive_timer = 1; soldier_unrest += 3
 go-to: defeat_desc
 
 = Defeat
@@ -47,7 +47,7 @@ The Central Powers have inflicted a defeat upon us. Our forces are in retreat. T
 
 
 @victory_1
-on-arrival: defensist_strength += 10; social_patriot_strength += 10; right_sr_strength += 10; morale *= 1.05; discipline *= 0.9; defense_bonus = 0; train_capacity *= 0.9999; military_progress += 1;  german_offensive_timer = 16
+on-arrival: defensist_strength += 10; social_patriot_strength += 10; right_sr_strength += 10; morale *= 1.05; discipline *= 0.9; defense_bonus = 0; train_capacity *= 0.9999; military_progress += 1;  german_offensive_timer = 16; soldier_unrest -= 5
 achievement: victory
 
 = Victory
@@ -60,7 +60,7 @@ Enemy casualties: [+ hostile_casualties +]0,000 troops
 [? if player_party = "b": The Russian army has defeated the German one. This is somewhat of a setback for the revolution. ?]
 
 @victory_2
-on-arrival: defensist_strength += 10; social_patriot_strength += 10; right_sr_strength += 10; morale *= 1.05; discipline *= 0.9; defense_bonus = 0; train_capacity *= 0.9999; military_progress += 2; german_offensive_timer = 16
+on-arrival: defensist_strength += 10; social_patriot_strength += 10; right_sr_strength += 10; morale *= 1.05; discipline *= 0.9; defense_bonus = 0; train_capacity *= 0.9999; military_progress += 2; german_offensive_timer = 16; soldier_unrest -= 8
 achievement: victory
 
 = Total Victory

@@ -72,7 +72,7 @@ title: Sign a ceasefire with the Central Powers.
 choose-if: (player_party = "m" and m_war_policy >= 2) or (player_party = "sr" and sr_war_policy >= 2) or (player_party = "k" and k_war_policy >= 1) or (player_party = "b")
 unavailable-subtitle: Our party does not support this.
 view-if: armistice_progress = 1 and is_armistice = 0
-on-arrival: armistice_progress += 1; west_relation -= 30; is_armistice = 1; prov_gov_legitimacy += 25; war_or_peace_timer = 8; soldiers_b -= 8 if player_party != "b" and not b_in_gov; soldiers_m += 8*(1-m_dissent) if m_in_gov; soldiers_sr += 8*(1-sr_dissent) if sr_in_gov; soldiers_k += 6*(1-k_dissent) if k_in_gov; workers_m += 8*(1-m_dissent) if m_in_gov; workers_sr += 8*(1-sr_dissent) if sr_in_gov; peasants_sr += 8*(1-sr_dissent) if sr_in_gov; workers_b +=  8*(1-b_dissent) if b_in_gov; soldiers_b += 8*(1-b_dissent) if b_in_gov; central_negotiations = 1; discipline *= 0.8; morale *= 0.8; war_weariness -= 25; left_sr_strength += sr_support_change if player_party != sr; internationalist_strength += m_support_change if player_party != "m"; right_sr_dissent += 5; defensist_dissent += 5
+on-arrival: armistice_progress += 1; west_relation -= 30; is_armistice = 1; prov_gov_legitimacy += 25; war_or_peace_timer = 8; soldiers_b -= 8 if player_party != "b" and not b_in_gov; soldiers_m += 10*(1-m_dissent) if m_in_gov; soldiers_sr += 10*(1-sr_dissent) if sr_in_gov; soldiers_k += 6*(1-k_dissent) if k_in_gov; workers_m += 10*(1-m_dissent) if m_in_gov; workers_sr += 10*(1-sr_dissent) if sr_in_gov; peasants_sr += 10*(1-sr_dissent) if sr_in_gov; workers_b +=  10*(1-b_dissent) if b_in_gov; soldiers_b += 10*(1-b_dissent) if b_in_gov; central_negotiations = 1; discipline *= 0.8; morale *= 0.8; war_weariness -= 25; left_sr_strength += sr_support_change if player_party != sr; internationalist_strength += m_support_change if player_party != "m"; right_sr_dissent += 5; defensist_dissent += 5; soldier_unrest -= 20
 achievement: peace
 
 # begin timers - war or peace: either peace treaty or war begins anew.
@@ -113,7 +113,7 @@ The treaty is largely on good terms for us. There are no indemnities on either s
 
 @sign_treaty_good
 title: Sign the peace treaty!
-on-arrival: is_peace = 1; prov_gov_legitimacy += 20; middle_m += 5*(1-m_dissent) if m_in_gov; middle_sr += 5*(1-sr_dissent) if sr_in_gov; middle_k += 10*(1-k_dissent) if k_in_gov; workers_m += 8*(1-m_dissent) if m_in_gov; workers_sr += 8*(1-sr_dissent) if sr_in_gov; workers_b += 10*(1-b_dissent) if b_in_gov; soldiers_m += 10*(1-m_dissent) if m_in_gov; soldiers_sr += 10*(1-sr_dissent) if sr_in_gov; soldiers_b += 15*(1-b_dissent) if b_in_gov; war_weariness -= 30
+on-arrival: is_peace = 1; prov_gov_legitimacy += 20; middle_m += 5*(1-m_dissent) if m_in_gov; middle_sr += 5*(1-sr_dissent) if sr_in_gov; middle_k += 10*(1-k_dissent) if k_in_gov; workers_m += 8*(1-m_dissent) if m_in_gov; workers_sr += 8*(1-sr_dissent) if sr_in_gov; workers_b += 10*(1-b_dissent) if b_in_gov; soldiers_m += 10*(1-m_dissent) if m_in_gov; soldiers_sr += 10*(1-sr_dissent) if sr_in_gov; soldiers_b += 15*(1-b_dissent) if b_in_gov; war_weariness -= 30; soldier_unrest -= 30
 achievement: peace_2
 
 We have officially signed a separate peace with the Central Powers!
@@ -131,7 +131,7 @@ There are no indemnities in the treaty. Poland and Finland will become independe
 
 @sign_treaty_neutral
 title: Sign the peace treaty!
-on-arrival: is_peace = 1; prov_gov_legitimacy += 10; middle_m += 5*(1-m_dissent) if m_in_gov; middle_sr += 5*(1-sr_dissent) if sr_in_gov; middle_k += 5*(1-k_dissent) if k_in_gov; workers_m += 8*(1-m_dissent) if m_in_gov; workers_sr += 8*(1-sr_dissent) if sr_in_gov; workers_b += 8*(1-b_dissent) if b_in_gov; soldiers_m += 8*(1-m_dissent) if m_in_gov; soldiers_sr += 8*(1-sr_dissent) if sr_in_gov; soldiers_b += 8*(1-b_dissent) if b_in_gov; war_weariness -= 30
+on-arrival: is_peace = 1; prov_gov_legitimacy += 10; middle_m += 5*(1-m_dissent) if m_in_gov; middle_sr += 5*(1-sr_dissent) if sr_in_gov; middle_k += 5*(1-k_dissent) if k_in_gov; workers_m += 8*(1-m_dissent) if m_in_gov; workers_sr += 8*(1-sr_dissent) if sr_in_gov; workers_b += 8*(1-b_dissent) if b_in_gov; soldiers_m += 8*(1-m_dissent) if m_in_gov; soldiers_sr += 8*(1-sr_dissent) if sr_in_gov; soldiers_b += 8*(1-b_dissent) if b_in_gov; war_weariness -= 30; soldier_unrest -= 30
 achievement: peace_2
 
 We have officially signed a separate peace with the Central Powers!
@@ -156,7 +156,7 @@ The treaty involves a loss of territory to the Central Powers, but no indemnitie
 
 @sign_treaty_bad
 title: Sign the peace treaty!
-on-arrival: is_peace = 1; west_relation -= 10; prov_gov_legitimacy -= 5; m_k_relation -= 10 if m_in_gov; sr_k_relation -= 10 if k_in_gov; b_k_relation -= 20 if b_in_gov; industry -= 5; train_capacity *= 0.95; war_weariness -= 25; workers_m += 5*(1-m_dissent) if m_in_gov; workers_sr += 5*(1-sr_dissent) if sr_in_gov; soldiers_m += 5*(1-m_dissent) if m_in_gov; soldiers_sr += 5*(1-sr_dissent) if sr_in_gov; workers_b += 5*(1-b_dissent) if b_in_gov; soldiers_b += 5*(1-b_dissent) if b_in_gov
+on-arrival: is_peace = 1; west_relation -= 10; prov_gov_legitimacy -= 5; m_k_relation -= 10 if m_in_gov; sr_k_relation -= 10 if k_in_gov; b_k_relation -= 20 if b_in_gov; industry -= 5; train_capacity *= 0.95; war_weariness -= 25; workers_m += 5*(1-m_dissent) if m_in_gov; workers_sr += 5*(1-sr_dissent) if sr_in_gov; soldiers_m += 5*(1-m_dissent) if m_in_gov; soldiers_sr += 5*(1-sr_dissent) if sr_in_gov; workers_b += 5*(1-b_dissent) if b_in_gov; soldiers_b += 5*(1-b_dissent) if b_in_gov; soldier_unrest -= 20
 achievement: peace_2
 
 We have officially signed a separate peace with the Central Powers! The treaty is viewed negatively by the Kadets and those who sympathize most with the Allies, but it is generally accepted.
@@ -186,7 +186,7 @@ Many Russians view the treaty as humiliating, but some see it as necessary to ac
 @sign_treaty_harsh
 title: Sign the peace treaty!
 subtitle: There is no other option.
-on-arrival: is_peace = 1; west_relation -= 10; prov_gov_legitimacy -= 10; m_k_relation -= 20 if m_in_gov; sr_k_relation -= 20 if k_in_gov; b_k_relation -= 20 if b_in_gov; budget -= 2; industry -= 10; food_production *= 0.9; urban_population *= 0.9; rural_population *= 0.9; train_capacity *= 0.9; workers_m -= 10 if m_in_gov; workers_sr -= 10 if sr_in_gov; rural_sr -= 10 if sr_in_gov; workers_b -= 10 if b_in_gov; middle_k -= 5 if k_in_gov; middle_m -= 10 if m_in_gov; middle_sr -= 10 if sr_in_gov; war_weariness -= 20
+on-arrival: is_peace = 1; west_relation -= 10; prov_gov_legitimacy -= 10; m_k_relation -= 20 if m_in_gov; sr_k_relation -= 20 if k_in_gov; b_k_relation -= 20 if b_in_gov; budget -= 2; industry -= 10; food_production *= 0.9; urban_population *= 0.9; rural_population *= 0.9; train_capacity *= 0.9; workers_m -= 10 if m_in_gov; workers_sr -= 10 if sr_in_gov; rural_sr -= 10 if sr_in_gov; workers_b -= 10 if b_in_gov; middle_k -= 5 if k_in_gov; middle_m -= 10 if m_in_gov; middle_sr -= 10 if sr_in_gov; war_weariness -= 20; soldier_unrest -= 20
 achievement: peace_2
 
 We have officially signed a separate peace with the Central Powers! The treaty is viewed as harsh and humiliating in many parts of Russia, and the popularity of all of the government parties has declined.
@@ -220,7 +220,7 @@ Signing this treaty will likely lead to rebellion, not just among the right. A h
 @sign_treaty_severe
 title: Sign the peace treaty!
 subtitle: There is no other option.
-on-arrival: is_peace = 1; west_relation -= 10; prov_gov_legitimacy -= 10; m_k_relation -= 30 if m_in_gov; sr_k_relation -= 30 if k_in_gov; b_k_relation -= 50 if b_in_gov; budget -= 4; industry -= 35; food_production *= 0.7; urban_population *= 0.8; rural_population *= 0.8; train_capacity *= 0.8; workers_m -= 15 if m_in_gov; workers_sr -= 15 if sr_in_gov; rural_sr -= 15 if sr_in_gov; workers_b -= 15 if b_in_gov; middle_k -= 15 if k_in_gov; middle_m -= 15 if m_in_gov; middle_sr -= 15 if sr_in_gov; war_weariness -= 15
+on-arrival: is_peace = 1; west_relation -= 10; prov_gov_legitimacy -= 10; m_k_relation -= 30 if m_in_gov; sr_k_relation -= 30 if k_in_gov; b_k_relation -= 50 if b_in_gov; budget -= 4; industry -= 35; food_production *= 0.7; urban_population *= 0.8; rural_population *= 0.8; train_capacity *= 0.8; workers_m -= 15 if m_in_gov; workers_sr -= 15 if sr_in_gov; rural_sr -= 15 if sr_in_gov; workers_b -= 15 if b_in_gov; middle_k -= 15 if k_in_gov; middle_m -= 15 if m_in_gov; middle_sr -= 15 if sr_in_gov; war_weariness -= 15; soldier_unrest -= 15
 achievement: peace_2
 
 We have officially signed a separate peace with the Central Powers! The treaty is viewed as harsh and humiliating in many parts of Russia, and the popularity of all of the government parties has declined. A significant portion of our land, population, and industrial capacity has been given up.
@@ -239,7 +239,7 @@ We will attempt to renegotiate the peace treaty for better terms, but it is very
 title: Refuse to sign the peace treaty!
 subtitle: This will cause the resumption of war.
 view-if: renegotiate > 0 or war_or_peace_seen > 0
-on-arrival: is_peace = 0; is_armistice = 0; central_negotiations = 0; refuse_treaty = 1; german_offensive_timer = 0; armistice_progress = 0
+on-arrival: is_peace = 0; is_armistice = 0; central_negotiations = 0; refuse_treaty = 1; german_offensive_timer = 0; armistice_progress = 0; soldier_unrest += 20
 achievement: no_peace_no_war
 
 We have refused to sign the treaty. War has resumed with the Central Powers.
