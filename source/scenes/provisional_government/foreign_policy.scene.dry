@@ -62,7 +62,7 @@ title: Purchase industrial equipment.
 title: Negotiate for a ceasefire with the Central Powers.
 choose-if: (player_party = "m" and m_war_policy >= 2) or (player_party = "sr" and sr_war_policy >= 2) or (player_party = "k" and k_war_policy >= 1)
 unavailable-subtitle: Our party does not support this.
-view-if: armistice_progress = 0
+view-if: armistice_progress = 0 and not is_armistice and not is_peace and not allied_victory
 on-arrival: armistice_progress += 1; west_relation -= 10; left_sr_strength += sr_support_change if player_party != sr; internationalist_strength += m_support_change if player_party != "m"; right_sr_dissent += 5; defensist_dissent += 5
 
 We have opened ceasefire negotiations with the Central Powers. We should be able to sign a ceasefire soon...
@@ -71,7 +71,7 @@ We have opened ceasefire negotiations with the Central Powers. We should be able
 title: Sign a ceasefire with the Central Powers.
 choose-if: (player_party = "m" and m_war_policy >= 2) or (player_party = "sr" and sr_war_policy >= 2) or (player_party = "k" and k_war_policy >= 1) or (player_party = "b")
 unavailable-subtitle: Our party does not support this.
-view-if: armistice_progress = 1 and is_armistice = 0
+view-if: armistice_progress = 1 and is_armistice = 0 and not is_peace and not allied_victory
 on-arrival: armistice_progress += 1; west_relation -= 30; is_armistice = 1; prov_gov_legitimacy += 25; war_or_peace_timer = 8; soldiers_b -= 8 if player_party != "b" and not b_in_gov; soldiers_m += 10*(1-m_dissent) if m_in_gov; soldiers_sr += 10*(1-sr_dissent) if sr_in_gov; soldiers_k += 6*(1-k_dissent) if k_in_gov; workers_m += 10*(1-m_dissent) if m_in_gov; workers_sr += 10*(1-sr_dissent) if sr_in_gov; peasants_sr += 10*(1-sr_dissent) if sr_in_gov; workers_b +=  10*(1-b_dissent) if b_in_gov; soldiers_b += 10*(1-b_dissent) if b_in_gov; central_negotiations = 1; discipline *= 0.8; morale *= 0.8; war_weariness -= 25; left_sr_strength += sr_support_change if player_party != sr; internationalist_strength += m_support_change if player_party != "m"; right_sr_dissent += 5; defensist_dissent += 5; soldier_unrest -= 20
 achievement: peace
 
@@ -83,7 +83,7 @@ Our relations with the West might be irreparable after this.
 
 @peace_negotiate_3
 title: Negotiate for a permanent peace treaty.
-view-if: is_armistice and central_negotiations < 2 and not is_peace
+view-if: is_armistice and central_negotiations < 2 and not is_peace and not allied_victory
 on-arrival: central_negotiations += 1; war_or_peace_timer += 2;
 
 We are continuing with the negotiations for a permanent peace.
