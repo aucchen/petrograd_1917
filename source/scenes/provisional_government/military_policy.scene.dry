@@ -90,24 +90,27 @@ Movement capacity: [+ remaining_movement_capacity +] divisions
 
 @remove_northern
 title: Remove troops from the Northern Front.
-on-arrival: northern_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm
-choose-if: remaining_movement_capacity > 0
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if northern_front_soldiers <= 0: There are no troops left to remove. ?]
+on-arrival: northern_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm; northern_front_soldiers = 0 if northern_front_soldiers < 0
+choose-if: remaining_movement_capacity > 0 and northern_front_soldiers > 0
 go-to: reallocate
 
 We have removed [+ sm +] divisions from the Northern Front.
 
 @remove_western
 title: Remove troops from the Western Front.
-on-arrival: western_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm
-choose-if: remaining_movement_capacity > 0
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if western_front_soldiers <= 0: There are no troops left to remove. ?]
+on-arrival: western_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm; western_front_soldiers = 0 if western_front_soldiers < 0
+choose-if: remaining_movement_capacity > 0 and western_front_soldiers > 0
 go-to: reallocate
 
 We have removed [+ sm +] divisions from the Western Front.
 
 @remove_southwestern
 title: Remove troops from the Southwestern Front.
-on-arrival: southwestern_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm
-choose-if: remaining_movement_capacity > 0
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if southwestern_front_soldiers <= 0: There are no troops left to remove. ?]
+on-arrival: southwestern_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm; southwestern_front_soldiers = 0 if southwestern_front_soldiers < 0
+choose-if: remaining_movement_capacity > 0 and southwestern_front_soldiers > 0
 go-to: reallocate
 
 We have removed [+ sm +] divisions from the Southwestern Front.
@@ -115,8 +118,9 @@ We have removed [+ sm +] divisions from the Southwestern Front.
 
 @remove_romanian
 title: Remove troops from the Romanian Front.
-on-arrival: romanian_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm
-choose-if: remaining_movement_capacity > 0
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if romanian_front_soldiers <= 0: There are no troops left to remove. ?]
+on-arrival: romanian_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm; romanian_front_soldiers = 0 if romanian_front_soldiers < 0
+choose-if: remaining_movement_capacity > 0 and romanian_front_soldiers > 0
 go-to: reallocate
 
 We have removed [+ sm +] divisions from the Romanian Front.
@@ -124,8 +128,9 @@ We have removed [+ sm +] divisions from the Romanian Front.
 
 @remove_caucasus
 title: Remove troops from the Caucasus Front.
-on-arrival: caucasus_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm
-choose-if: remaining_movement_capacity > 0
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if caucasus_front_soldiers <= 0: There are no troops left to remove. ?]
+on-arrival: caucasus_front_soldiers -= sm; reserve_soldiers += sm; soldiers_moved += sm; caucasus_front_soldiers = 0 if caucasus_front_soldiers < 0
+choose-if: remaining_movement_capacity > 0 and caucasus_front_soldiers > 0
 go-to: reallocate
 
 We have removed [+ sm +] divisions from the Caucasus Front.
@@ -133,6 +138,7 @@ We have removed [+ sm +] divisions from the Caucasus Front.
 
 @add_northern
 title: Add troops to the Northern Front.
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if reserve_soldiers <= sm : There are not enough troops in the reserve. ?]
 on-arrival: northern_front_soldiers += sm; reserve_soldiers -= sm; soldiers_moved += sm
 choose-if: remaining_movement_capacity > 0 and reserve_soldiers > sm
 go-to: reallocate
@@ -141,6 +147,7 @@ We have added [+ sm +] divisions to the Northern Front.
 
 @add_western
 title: Add troops to the Western Front.
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if reserve_soldiers <= sm : There are not enough troops in the reserve. ?]
 on-arrival: western_front_soldiers += sm; reserve_soldiers -= sm; soldiers_moved += sm
 choose-if: remaining_movement_capacity > 0 and reserve_soldiers > sm
 go-to: reallocate
@@ -150,6 +157,7 @@ We have added [+ sm +] divisions to the Western Front.
 
 @add_southwestern
 title: Add troops to the Southwestern Front.
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if reserve_soldiers <= sm : There are not enough troops in the reserve. ?]
 on-arrival: southwestern_front_soldiers += sm; reserve_soldiers -= sm; soldiers_moved += sm
 choose-if: remaining_movement_capacity > 0 and reserve_soldiers > sm
 go-to: reallocate
@@ -159,6 +167,7 @@ We have added [+ sm +] divisions to the Southwestern Front.
 
 @add_romanian
 title: Add troops to the Romanian Front.
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if reserve_soldiers <= sm : There are not enough troops in the reserve. ?]
 on-arrival: romanian_front_soldiers += sm; reserve_soldiers -= sm; soldiers_moved += sm
 choose-if: remaining_movement_capacity > 0 and reserve_soldiers > sm
 go-to: reallocate
@@ -168,6 +177,7 @@ We have added [+ sm +] divisions to the Romanian Front.
 
 @add_caucasus
 title: Add troops to the Caucasus Front.
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if reserve_soldiers <= sm : There are not enough troops in the reserve. ?]
 subtitle: [? if ottoman_capitulation: The Ottoman Empire has already surrendered, so more troops are unnecessary for now. ?]
 on-arrival: caucasus_front_soldiers += sm; reserve_soldiers -= sm; soldiers_moved += sm
 choose-if: remaining_movement_capacity > 0 and reserve_soldiers > sm
@@ -179,6 +189,7 @@ We have added [+ sm +] divisions to the Caucasus Front.
 @demobilize
 title: Demobilize some reserve troops, returning them to civilian life.
 subtitle: If we demobilize enough soldiers, we can save some budget.
+unavailable-subtitle: [? if remaining_movement_capacity <= 0 : We do not have any more transport capacity. ?][? if reserve_soldiers <= sm : There are not enough troops in the reserve. ?]
 on-arrival: reserve_soldiers -= sm; soldiers_demobilized += sm; budget += 2 if soldiers_demobilized >= 50; unemployed += 0.3 if soldiers_demobilized >= 50; soldiers -= 1 if soldiers_demobilized >= 50; workers += 0.2 if soldiers_demobilized >= 50; peasants += 0.5 if soldiers_demobilized >= 50; food_production += 1000 if soldiers_demobilized >= 50; industry += 0.5 if soldiers_demobilized >= 50; food_requisitioned -= 0.004 if soldiers_demobilized >= 50 and food_requisitioned >= 0.004; food_sold += 0.003 if soldiers_demobilized >= 50
 choose-if: remaining_movement_capacity > 0 and reserve_soldiers > sm
 on-departure: soldiers_demobilized = 0 if soldiers_demobilized >= 50

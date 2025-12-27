@@ -37,6 +37,9 @@ if (Q.ca_held) {
     if (Q.player_party == "m" && Q.m_leadership == 1 && Q.in_socialist_coalition && (Q.is_armistice || Q.is_peace)) {
         this.achieve('martovs_dream');
     }
+    if (Q.player_party == "b" && Q.b_assembly_votes_dec >= 30) {
+        this.achieve('kamenevs_dream');
+    }
 }
 
 if (Q.hunger < 11) {
