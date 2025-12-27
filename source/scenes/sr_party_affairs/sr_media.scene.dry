@@ -23,7 +23,7 @@ What should be our strategy for our newspapers and party organs?
 title: Support the Provisional Government.
 subtitle: -1 resource
 choose-if: sr_resources >= 1
-on-arrival: sr_k_relation += 6*(1-sr_dissent); soviet_cooperation += 0.04*(1-sr_dissent) if sr_in_exco; sr_resources -= 1
+on-arrival: sr_k_relation += 6*(1-sr_dissent); soviet_cooperation += 0.04*(1-sr_dissent) if sr_in_exco; prov_gov_legitimacy += 4*(1-sr_dissent); sr_resources -= 1
 
 Our propaganda campaign is aimed at supporting the Provisional Government and Soviet cooperation with the Provisional Government. This raises our relations with the Kadets.
 
@@ -36,10 +36,10 @@ on-arrival: workers_sr += 4*(1-sr_dissent); peasants_sr += 3*(1-sr_dissent); sol
 Our propaganda campaign encourages support for the SR party among the workers, soldiers, and peasants.
 
 @support_rd
-title: Support the ideology of revolutionary defensism - defending a defensive war effort as necessary for peace.
+title: Support the ideology of revolutionary defensism - support a defensive war effort as necessary for peace.
 subtitle: -1 resource
 choose-if: sr_resources >= 1
-on-arrival: right_sr_strength += (sr_support_change+1)*(1-sr_dissent); sr_resources -= 1; right_sr_dissent -= 4;
+on-arrival: right_sr_strength += (sr_support_change+1)*(1-sr_dissent); sr_resources -= 1; right_sr_dissent -= 4; soldier_unrest -= 2*(1-sr_dissent) if right_sr_strength > left_sr_strength; morale += 0.02*(1-sr_dissent) if right_sr_strength > left_sr_strength
 
 Our newspapers print editorials in support of revolutionary defensism, arguing that a defensive war is necessary for a peace without annexations and indemnities. This benefits the Right-SRs.
 

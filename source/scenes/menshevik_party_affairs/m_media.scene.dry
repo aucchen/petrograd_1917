@@ -39,12 +39,12 @@ on-arrival: workers_m += 5*(1-m_dissent); soldiers_m += 5*(1-m_dissent); soldier
 Our propaganda campaign encourages support for the Menshevik party among the workers and soldiers. [? if prov_gov_legitimacy <= 40 and m_industrial_policy <= 0 : The workers demand a more radical industrial policy than what we are able to provide, limiting our appeal. ?] [? if (war_weariness >= 60 and m_war_policy <= 1): Our policy is viewed as too pro-war, and makes it harder to organize among the soldiers. ?]
 
 @support_rd
-title: Support the ideology of revolutionary defensism - defending a defensive war effort as necessary for peace.
+title: Support the ideology of revolutionary defensism - support a defensive war effort as necessary for peace.
 subtitle: -1 resource
 choose-if: m_resources >= 1
-on-arrival: defensist_strength += (m_support_change+2)*(1-m_dissent); defensist_dissent -= 8; m_resources -= 1
+on-arrival: defensist_strength += (m_support_change+2)*(1-m_dissent); defensist_dissent -= 8; m_resources -= 1; soldier_unrest -= 2*(1-m_dissent) if defensist_strength > internationalist_strength; morale += 0.02*(1-m_dissent) if defensist_strength > internationalist_strength
 
-Our newspapers print editorials in support of revolutionary defensism, arguing that a defensive war is necessary for a peace without annexations and indemnities.
+Our newspapers print editorials in support of revolutionary defensism, arguing that a defensive war is necessary for a peace without annexations and indemnities. This bolsters the defensists in the party, while also promoting a more defensist attitude towards the war among the soldiers.
 
 @support_id
 title: Support the ideology of internationalism - support immediate negotiations for a peace.
@@ -59,6 +59,6 @@ title: Support the war effort from a social-patriot standpoint.
 unavailable-subtitle: [? if m_resources < 1: Not enough resources. ?][? if social_patriot_strength <= internationalist_strength: The Social Patriots are not strong enough. ?]
 subtitle: -1 resource
 choose-if: m_resources >= 1 and social_patriot_strength > internationalist_strength
-on-arrival: social_patriot_strength += (m_support_change+2)*(1-m_dissent); social_patriot_dissent -= 8*(1-m_dissent); internationalist_dissent += 5; war_weariness -= 3*(1-m_dissent); m_resources -= 1
+on-arrival: social_patriot_strength += (m_support_change+2)*(1-m_dissent); social_patriot_dissent -= 8*(1-m_dissent); internationalist_dissent += 5; war_weariness -= 3*(1-m_dissent); m_resources -= 1; soldier_unrest -= 3*(1-m_dissent) if defensist_strength > internationalist_strength; morale += 0.02*(1-m_dissent) if defensist_strength > internationalist_strength
 
 Our newspapers print editorials in support of the war effort, without any of the revolutionary defensist conditions. This bolsters the Social Patriot faction.

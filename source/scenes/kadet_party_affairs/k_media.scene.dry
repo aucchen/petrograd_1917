@@ -40,6 +40,6 @@ Our media campaign encourages support for the Constitutional Democrat party amon
 title: Support the war effort.
 subtitle: -1 resource
 choose-if: k_resources >= 1
-on-arrival: war_weariness -= 4*(1-k_dissent);  k_resources -= 1
+on-arrival: war_weariness -= 4*(1-k_dissent); soldier_unrest -= 2*(1-k_dissent); morale += 0.01*(1-k_dissent);  k_resources -= 1
 
 Our newspapers print editorials in support of the war effort, hoping to reduce the war weariness.
