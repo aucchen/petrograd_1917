@@ -96,11 +96,19 @@ The Bolsheviks have taken over Petrograd, and are consolidating their rule over 
 
 @war_persists
 title: The war goes on...
-view-if: not is_armistice and not is_peace
+view-if: not is_armistice and not is_peace and not allied_victory
 tags: endings
 go-to: eg_menu
 
 The war continues unabated. [? if revolutionary_victory: Now, it will be the task of the Bolsheviks to end the war. ?][? if ca_held: It will be the task of the Constituent Assembly to end the war. ?]
+
+@allied_victory
+title: Allied victory!
+view-if: allied_victory
+tags: endings
+go-to: eg_menu
+
+The Great War is over, and Russia is one of the victors. German forces have collapsed following repeated Allied victories. Now, Russia must work with the Allies to shape the fate of the post-war world.
 
 @armistice_
 title: A fragile peace
@@ -248,6 +256,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_milyukovs_dream : **Мечта Милюкова (Milyukov's Dream)** - defeat the Ottoman Empire. ?]
 
+[? if game_achievement_allied_victory : **Победа Антанты (Entente Victory)** - win the Great War as part of the Allies. ?]
+
 [? if game_achievement_womens_battalion : **Женские батальоны смерти (Women's Battalion of Death)** - form the Women's Battalion of Death. ?]
 
 [? if game_achievement_martovs_dream : **Мечта Мартова (Martov's Dream)** - as the Mensheviks, form an all-socialist government, sign an armistice, and hold the Constituent Assembly elections. ?]
@@ -297,6 +307,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if achievement_milyukovs_dream : **Мечта Милюкова (Milyukov's Dream)** - defeat the Ottoman Empire. ?]
 
+[? if achievement_allied_victory : **Победа Антанты (Entente Victory)** - win the Great War as part of the Allies. ?]
+
 [? if achievement_womens_battalion : **Женские батальоны смерти (Women's Battalion of Death)** - form the Women's Battalion of Death. ?]
 
 [? if achievement_martovs_dream : **Мечта Мартова (Martov's Dream)** - as the Mensheviks, form an all-socialist government, sign an armistice, and hold the Constituent Assembly elections. ?]
@@ -344,6 +356,8 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if not achievement_victory : **Прорыв (Breakthrough)** - win at least one battle in the Great War. ?]
 
 [? if not achievement_milyukovs_dream : **Мечта Милюкова (Milyukov's Dream)** - defeat the Ottoman Empire. ?]
+
+[? if not achievement_allied_victory : **Победа Антанты (Entente Victory)** - win the Great War as part of the Allies. ?]
 
 [? if not achievement_womens_battalion : **Женские батальоны смерти (Women's Battalion of Death)** - form the Women's Battalion of Death. ?]
 
