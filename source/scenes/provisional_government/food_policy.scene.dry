@@ -48,11 +48,11 @@ We have increased the price of grain paid out to farmers. This is a strain on ou
 @demilitarization
 title: End military requisitioning of grain.
 subtitle: Now that we are at peace, we can return food to the cities.
-view-if: is_armistice or is_peace
-choose-if: southwestern_front_soldiers < 50 and northern_front_soldiers < 50 and western_front_soldiers < 50 and romanian_front_soldiers < 50
+view-if: is_armistice or is_peace or allied_victory
+choose-if: southwestern_front_soldiers < 50 and northern_front_soldiers < 50 and western_front_soldiers < 50 and romanian_front_soldiers < 50 and caucasus_front_soldiers < 50
 unavailable-subtitle: There are still too many soldiers in the field.
 max-visits: 1
-on-arrival: food_sold += food_requisitioned; food_requisitioned = 0;
+on-arrival: food_sold += food_requisitioned/2; food_requisitioned = 0;
 
 
 @reduce_rations

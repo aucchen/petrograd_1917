@@ -1,7 +1,7 @@
 title: [+ war_minister +] Offensive
 subtitle: Finally, the long-awaited offensive is near...
 new-page: true
-view-if: month = 6 and week >= 2 and offensive_timer = 0 and ((player_party = "m" and war_minister_party != "Menshevik") or (player_party = "k" and war_minister != "Guchkov") or (player_party = "sr" and war_minister_party != "SR") or player_party = "b") and not is_armistice and not is_peace
+view-if: month = 6 and week >= 2 and offensive_timer = 0 and ((player_party = "m" and war_minister_party != "Menshevik") or (player_party = "k" and war_minister != "Guchkov") or (player_party = "sr" and war_minister_party != "SR") or player_party = "b") and not is_armistice and not is_peace and not allied_victory
 on-arrival: southwestern_front_soldiers += 50; reserve_soldiers -= 50; morale += 0.1; discipline += 0.1; civilian_industry -= 5; military_industry += 5; military_trains += 5; civilian_trains -= 5;
 max-visits: 1
 tags: event

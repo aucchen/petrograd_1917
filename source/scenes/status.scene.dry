@@ -153,6 +153,8 @@ War progress: [+ war_progress : war_score +]
 
 [? if is_armistice and not is_peace: Peace negotiations: [+ central_negotiations +]?]
 
+[? if allied_victory: The Central Powers have sued for a ceasefire. The war is over. ?]
+
 War weariness: [+ war_weariness : war_weariness +]
 
 Soldier unrest: [+ soldier_unrest : war_weariness +]

@@ -1,7 +1,7 @@
 title: German Offensive
 subtitle: The enemy is making their move...
 new-page: true
-view-if: ((year = 1917 and month >= 9) or (year >= 1918 and month >= 3) or refuse_treaty or (best_front_ratio >= 15)) and best_front_ratio > 1 and not is_armistice and not is_peace and german_offensive_timer = 0
+view-if: ((year = 1917 and month >= 9) or (year >= 1918 and month >= 3) or refuse_treaty or (best_front_ratio >= 15)) and best_front_ratio > 1 and not is_armistice and not is_peace and not allied_victory and german_offensive_timer = 0
 on-arrival: enemy_front = best_enemy_front; front = best_front; attacking = 0; in_defensive_battle = 1; german_offensive_timer += 16; german_offensive_timer = 1 if refuse_treaty
 tags: event
 

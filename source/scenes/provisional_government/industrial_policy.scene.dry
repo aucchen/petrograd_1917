@@ -152,7 +152,7 @@ With the cooperation of the Petrograd Soviet, We have embarked on a project to o
 @demilitarization
 title: Return the industries to civilian footing.
 subtitle: This is a major undertaking - we will shift all of our military industries to various civilian uses.
-view-if: (is_armistice or is_peace) and not is_demilitarized
+view-if: (is_armistice or is_peace or allied_victory) and not is_demilitarized
 on-arrival: {!
 Q.is_demilitarized = 1;
 var mil = Q.military_industry;
