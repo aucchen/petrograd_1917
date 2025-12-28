@@ -78,7 +78,7 @@ title: Persecute the Bolsheviks, anarchists, and other malcontents.
 unavailable-subtitle: Our city militias are not effective enough.
 view-if: b_threat >= 1 and player_party != "b" and not b_in_gov
 choose-if: city_militias >= 1
-on-arrival: workers_b -= 8*prov_gov_efficacy; soldiers_b -= 8*prov_gov_efficacy; b_threat -= 1; m_b_relation -= 15 if m_in_gov; b_sr_relation -= 15 if sr_in_gov; b_k_relation -= 15 if k_in_gov
+on-arrival: workers_b -= 8*prov_gov_efficacy; soldiers_b -= 8*prov_gov_efficacy; b_threat -= 1; m_b_relation -= 15 if m_in_gov; b_sr_relation -= 15 if sr_in_gov; b_k_relation -= 15 if k_in_gov; mrc_timer += 1 if mrc_timer > 0; bolshevik_coup_timer += 1 if bolshevik_coup_timer > 0
 
 We have arrested some of the Bolsheviks who organized riots in the city, and forced others into exile.
 
