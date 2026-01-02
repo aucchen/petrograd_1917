@@ -2,7 +2,7 @@ title: Military-Revolutionary Committee
 subtitle: The Bolsheviks are organizing for an uprising...
 new-page: True
 view-if: b_in_exco and prov_gov_legitimacy <= 50 and mrc_timer = 0 and player_party != "b" and government_form != 1 and government_form != 5 and not b_in_gov
-on-arrival: soldiers_b += 15; workers_militia_b_loyalty += 25; mrc = 1; bolshevik_coup_timer = 4; rev_progress += 3; soviet_cooperation = 0;
+on-arrival: soldiers_b += 15; workers_militia_b_loyalty += 25; mrc = 1; bolshevik_coup_timer = 4; rev_progress += 3; soviet_cooperation = 0; b_threat += 1
 tags: event
 max-visits: 1
 

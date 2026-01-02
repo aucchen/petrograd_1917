@@ -72,6 +72,11 @@ on-arrival: rural_unrest -= rural_militia_strength*rural_militia_militancy*unres
 
 We have sent the rural militias to suppress peasant land seizures.
 
+# TODO: investigate Bolsheviks
+
+@investigate_bolsheviks
+title: Investigate the Bolsheviks and anarchists
+
 
 @target_bolsheviks
 title: Persecute the Bolsheviks, anarchists, and other malcontents.

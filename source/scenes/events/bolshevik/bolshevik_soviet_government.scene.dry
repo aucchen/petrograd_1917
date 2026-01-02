@@ -1,5 +1,5 @@
 title: The Bolsheviks take over the Soviet Government...
-view-if: government_form == 1 and b_in_exco = 1 and soviet_chair_party = "Bolshevik" and prime_minister_party != "Bolshevik" and b_soviet > m_soviet and b_soviet > sr_soviet
+view-if: government_form == 1 and b_in_exco = 1 and soviet_chair_party = "Bolshevik" and prime_minister_party != "Bolshevik" and b_soviet >= m_soviet + sr_soviet
 on-arrival: prime_minister = "Lenin"; prime_minister_party = "Bolshevik"; interior_minister = "Rykov"; interior_minister_party = "Bolshevik"; foreign_minister = "Trotsky"; foreign_minister_party = "Bolshevik"; war_minister = "Krylenko"; war_minister_party = "Bolshevik"; finance_minister = "Menzhinsky"; finance_minister_party = "Bolshevik"; justice_minister = "Oppokov"; justice_minister_party = "Bolshevik"; agriculture_minister = "Milyutin"; agriculture_minister_party = "Bolshevik"; transport_minister = "Yelizarov"; transport_minister_party = "Bolshevik"; trade_minister = "Nogin"; trade_minister_party = "Bolshevik"; education_minister = "Lunacharsky"; education_minister_party = "Bolshevik"; labor_minister = "Shlyapnikov"; labor_minister_party = "Bolshevik"; post_minister = "Glebov-Avilov"; post_minister_party = "Bolshevik"; b_in_gov = 1; m_in_gov = 0 if not m_in_exco; sr_in_gov = 0 if not sr_in_exco; bolshevik_takeover_timer = 4
 tags: event
 

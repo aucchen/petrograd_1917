@@ -18,6 +18,6 @@ go-to: soviet_leadership_election
 @b_k
 title: This is none of our business...
 view-if: player_party = "k"
-on-arrival: b_in_exco = 1; left_sr_in_exco = 1; m_in_exco = 0; sr_in_exco = 0; workers_milita_b_loyalty += 15; soldiers_b += 10; workers_b += 10; soviet_chair = "Trotsky"; soviet_chair_party = "Bolshevik";
+on-arrival: b_in_exco = 1; left_sr_in_exco = 1; m_in_exco = 0; sr_in_exco = 0; workers_milita_b_loyalty += 15; soldiers_b += 10; workers_b += 10; soviet_chair = "Trotsky"; soviet_chair_party = "Bolshevik"; b_threat += 1
 
 Whether or not the Bolsheviks take the Soviet is none of our business. But the Bolsheviks eventually do take control of the Executive Committee. This is a consequence of the Bolsheviks' rise in popularity, and a harbinger of their future growth.
