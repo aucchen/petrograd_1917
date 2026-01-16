@@ -76,7 +76,7 @@ go-to: b_revolution
 @anti_crime
 title: Use the workers' militias to combat crime.
 view-if: crime > 30
-on-arrival: crime -= workers_militia_strength/3*workers_militia_militancy; workers_m += 5*(1-m_dissent) if player_party == "m"; workers_sr += 5*(1-sr_dissent) if player_party == "sr"; worers_b += 5*(1-b_dissent) if player_party == "b"; prov_gov_legitimacy += 5 if government_form == 1;
+on-arrival: crime -= workers_militia_strength/3*workers_militia_militancy; workers_m += 5*(1-m_dissent) if player_party == "m"; workers_sr += 5*(1-sr_dissent) if player_party == "sr"; workers_b += 5*(1-b_dissent) if player_party == "b"; prov_gov_legitimacy += 5 if government_form == 1;
 
 We have deployed the workers' militias to increase security and combat crime in Petrograd.
 
