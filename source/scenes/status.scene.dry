@@ -205,7 +205,7 @@ switch (Q.player_party) {
     case 'sr':
         Q.sr_relation = -1;
         Q.b_relation = Q.b_sr_relation;
-        Q.m_relation = Q.m_b_relation;
+        Q.m_relation = Q.m_sr_relation;
         Q.k_relation = Q.sr_k_relation;
         break;
     case 'k':
