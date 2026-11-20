@@ -50,7 +50,7 @@ title: Support revolution and radicalism.
 subtitle: -1 resource - Support strikes among workers, land seizure among peasants, and anti-war sentiment among soldiers.
 unavailable-subtitle: [? if b_resources < 1: Not enough resources. ?][? if b_leadership = 1: The Bolshevik leadership is not radical enough. ?]
 choose-if: b_resources >= 1 and b_leadership = 2
-on-arrival: b_resources -= 1; worker_unrest += 3; peasant_unrest += 3; war_weariness += 8; morale -= 0.04; discipline -= 0.04 
+on-arrival: b_resources -= 1; labor_unrest += 3; peasant_unrest += 3; war_weariness += 8; morale -= 0.04; discipline -= 0.04 
 
 Our newspapers print savage attacks on the entire established order.
 
